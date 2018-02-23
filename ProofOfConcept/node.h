@@ -27,7 +27,7 @@ public:
     int getId()const;
 private:
     //serve per creare id Incrementali
-    static int NODE_NUMBER;
+    static unsigned int NODE_NUMBER;
     //id del nodo
     const int id;
     //colore

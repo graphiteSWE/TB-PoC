@@ -1,9 +1,9 @@
-#include "arc.h"
-#include "node.h"
 
+#include "node.h"
 #include <QPainter>
 
-int Node::NODE_NUMBER=0;
+//id inizia da 1
+unsigned int Node::NODE_NUMBER=0;
 
 Node::Node(const qreal &x, const qreal &y, const qreal &radius,const QColor& color,const int importance)
     : QObject()

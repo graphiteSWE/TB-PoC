@@ -1,11 +1,11 @@
-#include "graphmanager.h"
-#include "graphprinter.h"
+
 #include "mainwindow.h"
-#include "iostream"
-#include <QGraphicsView>
-#include <QPushButton>
-#include <QLayout>
-#include <QTextEdit>
+
+#include "graphprinter.h"
+#include "graphmanager.h"
+#include <qpushbutton.h>
+#include <qtextedit.h>
+
 //GraphManager è del model serve solo a gestire i nodi non ha resa grafica
 //GraphPrinter renderizza gli oggetti descritti nel modello
 //questa classe potrebbe avere merda che non ha senso di esistere qua

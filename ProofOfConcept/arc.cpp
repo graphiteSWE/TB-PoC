@@ -1,10 +1,8 @@
 #include "arc.h"
-
 #include <QPen>
-#include <QPainter>
 #include <graphmanager.h>
 #include <qmath.h>
-
+#include <QPainter>
 
 //costruisce un arco dato l'id del inizio e della fine
 Arc::Arc(int start,int end, QGraphicsItem *parent):

@@ -1,6 +1,7 @@
+
+#include <QApplication>
 #include "graphmanager.h"
 #include "mainwindow.h"
-#include <QApplication>
 #include <QTime>
 
 int main(int argc, char *argv[])

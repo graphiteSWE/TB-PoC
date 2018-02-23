@@ -1,12 +1,10 @@
-#include "arc.h"
+
 #include "graphmanager.h"
+
+#include "arc.h"
 #include "node.h"
-#include "iostream"
-#include <QContextMenuEvent>
-#include <qmenu.h>
-#include <algorithm>
-#include <iterator>
-#include <qDebug>
+
+
 GraphManager::GraphManager():
     QGraphicsScene(),
     Nodes(QVector<Node*>()),
