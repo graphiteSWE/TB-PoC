@@ -70,7 +70,7 @@ void MainWindow::newArc()
     errorLog->setText("Seleziona due Nodi");
     First=0;
     Model->clearSelection();
-    connect(Model,SIGNAL(selectionChanged()),this,SLOT(addItem()));
+    connect(Model,SIGNAL(selectionChanged()),this,SLOT(addItem()),Qt::UniqueConnection);
 }
 
 //dice al model di elimare l'oggetto in focus
@@ -80,6 +80,7 @@ void MainWindow::removeFocused()
     //se passasse potrebbe generare index out of bound
     if(Model->selectedItems().size()>0)
     {
+        First=0;
         Model->removeFocusItem();
     }
 }
