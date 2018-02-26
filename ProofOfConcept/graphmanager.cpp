@@ -4,6 +4,8 @@
 #include "arc.h"
 #include "node.h"
 
+#include <qiterator.h>
+
 
 GraphManager::GraphManager():
     QGraphicsScene(),
@@ -107,18 +109,17 @@ void GraphManager::removeFocusItem()
         removeItem(temp);
         //trova l'id e cancella tutti gli archi e li rimuove dal modello collegati a tale nodo
         int Id=(*Subject)->getId();
-        QVector<Arc*>::iterator lastValidIt = std::remove_if(Arcs.begin(),Arcs.end(),
-                       [Id,this](Arc* arc)
-                        {
-                        const bool arcFound=arc->getNodeId(Arc::start)==Id||arc->getNodeId(Arc::end)==Id;
-                        if(arcFound)
-                        {
-                            removeItem(arc);
-                            delete arc;
-                        }
-                        return arcFound;
-                        });
-        Arcs.erase(lastValidIt, Arcs.end());
+        for(QVector<Arc*>::iterator i=Arcs.begin();i!=Arcs.end();)
+        {
+            if((*i)->getNodeId(Arc::start)==Id||(*i)->getNodeId(Arc::end)==Id)
+            {
+
+                removeItem(*i);
+                delete *i;
+                i=Arcs.erase(i);
+            }
+            else ++i;
+        }
         //cancella il nodo sconnettendo il segnale e rimuovendolo dal modello
 
         disconnect(temp,temp->notifyPositionChange,this,this->updateArcsOfNode);
