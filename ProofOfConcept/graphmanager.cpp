@@ -102,6 +102,9 @@ void GraphManager::removeFocusItem()
     QVector<Node*>::iterator Subject=std::find_if(Nodes.begin(),Nodes.end(),[item](const Node* node){return item==node;});
     //se lo trova lo cancella
     if(Subject!=Nodes.end()){
+        Node * temp=*Subject;
+
+        removeItem(temp);
         //trova l'id e cancella tutti gli archi e li rimuove dal modello collegati a tale nodo
         int Id=(*Subject)->getId();
         QVector<Arc*>::iterator lastValidIt = std::remove_if(Arcs.begin(),Arcs.end(),
@@ -117,10 +120,9 @@ void GraphManager::removeFocusItem()
                         });
         Arcs.erase(lastValidIt, Arcs.end());
         //cancella il nodo sconnettendo il segnale e rimuovendolo dal modello
-        Node * temp=*Subject;
+
         disconnect(temp,temp->notifyPositionChange,this,this->updateArcsOfNode);
         Nodes.erase(Subject);
-        removeItem(item);
         delete (temp);
     }
     else
@@ -130,6 +132,7 @@ void GraphManager::removeFocusItem()
         if(Subject!=Arcs.end()){
             //se è un arco lo cancella rimuovenlo dal modello
             Arc* temp=*Subject;
+
             Arcs.removeAll(temp);
             removeItem(temp);
             delete (temp);
