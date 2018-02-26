@@ -3,8 +3,9 @@
 
 #include "graphprinter.h"
 #include "graphmanager.h"
+#include <QLineEdit>
+#include <QVBoxLayout>
 #include <qpushbutton.h>
-#include <qtextedit.h>
 
 //GraphManager è del model serve solo a gestire i nodi non ha resa grafica
 //GraphPrinter renderizza gli oggetti descritti nel modello
@@ -12,41 +13,47 @@
 
 MainWindow::MainWindow(QWidget *parent, GraphManager &Scene)
     : QMainWindow(parent),
-      GraphTable(new GraphPrinter(this)),
-      ButtonNode(new QPushButton("Nodino ++",this)),
-      ButtonArc(new QPushButton("Archetti ++",this)),
-      ButtonNode2(new QPushButton("Cancella bersaglio",this)),
-      errorLog(new QTextEdit(this)),
-      Model(&Scene)
+      mainWin(new QWidget()),
+      errorLog(new QLineEdit(mainWin)),
+      First(nullptr),
+    Model(&Scene)
 {
     //dico alla View che disegna chi è il suo model
-    GraphTable->setScene(&Scene);
+    GraphPrinter* GraphTable(new GraphPrinter(mainWin));
+    QPushButton* ButtonNode(new QPushButton("Nodino ++",mainWin));
+    QPushButton* ButtonArc(new QPushButton("Archetti ++",mainWin));
+    QPushButton* ButtonNode2(new QPushButton("Cancella bersaglio",mainWin));
+
+
+    QVBoxLayout* Layout(new QVBoxLayout());
+    QHBoxLayout* ButtonLayout(new QHBoxLayout());
     //dico che il il grafo è centrato nella pagina principale e lo aggiungo al layout
-    this->setCentralWidget(GraphTable);
-    ButtonArc->move(100,0);
-    ButtonNode2->move(0,30);
-    ButtonNode2->setMinimumWidth(200);
-    errorLog->move(200,0);
-    errorLog->setMinimumWidth(500);
+    this->setCentralWidget(mainWin);
+    ButtonLayout->addWidget(ButtonArc);
+
+
+    ButtonLayout->addWidget(ButtonNode);
+
+    ButtonLayout->addWidget(ButtonNode2);
+    Layout->addItem(ButtonLayout);
+    Layout->addWidget(errorLog);
+    errorLog->setMaximumHeight(30);
+    Layout->addSpacing(100);
+    Layout->addWidget(GraphTable);
+        GraphTable->setScene(&Scene);
     connect(ButtonNode,SIGNAL(clicked(bool)),this,SLOT(newNode()));
     connect(ButtonArc,SIGNAL(clicked(bool)),this,SLOT(newArc()));
     connect(ButtonNode2,SIGNAL(clicked(bool)),this,SLOT(removeFocused()));
+    mainWin->setLayout(Layout);
 }
 
 MainWindow::~MainWindow()
 {
     //sconnetto i segnali
-    disconnect(ButtonNode,SIGNAL(clicked(bool)),this,SLOT(newNode()));
-    disconnect(ButtonArc,SIGNAL(clicked(bool)),this,SLOT(newArc()));
-
-    disconnect(ButtonNode2,SIGNAL(clicked(bool)),this,SLOT(removeFocused()));
-    disconnect(Model,SIGNAL(selectionChanged()),this,SLOT(addItem()));
     //cancello tutti i figli dovrebbe essere fatto automaticamente via segnale
     //but posso vedere questo ma non i segnali
-    delete GraphTable;
-    delete ButtonArc;
-    delete ButtonNode;
-    delete ButtonNode2;
+    delete mainWin;
+    Model->deleteLater();
 }
 //dice al model di aggiugere un nodo in posizione 0 0
 void MainWindow::newNode()

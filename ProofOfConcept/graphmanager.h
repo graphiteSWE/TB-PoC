@@ -33,6 +33,7 @@ public slots:
     //quando un nodo si sposta lo segnala a questo slot
     void nodeMoved(const Node* node);
 
+
 };
 
 #endif // GRAPHMANAGER_H

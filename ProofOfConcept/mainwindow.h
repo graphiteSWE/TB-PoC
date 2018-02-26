@@ -3,10 +3,7 @@
 
 #include <QMainWindow>
 class GraphManager;
-class QVBoxLayout;
-class GraphPrinter;
-class QPushButton;
-class QTextEdit;
+class QLineEdit;
 class QGraphicsItem;
 //agglomerato di roba per
 class MainWindow : public QMainWindow
@@ -17,13 +14,10 @@ public:
     MainWindow(QWidget *parent, GraphManager &Scene);
     ~MainWindow();
 private:
-    GraphPrinter *GraphTable;
-    QPushButton* ButtonNode;
-    QPushButton* ButtonArc;
-    QPushButton* ButtonNode2;
-    QTextEdit* errorLog;
-    GraphManager *Model;
+    QWidget* mainWin;
+    QLineEdit* errorLog;
     QGraphicsItem *First;
+    GraphManager *Model;
 
 private slots:
     void newNode();

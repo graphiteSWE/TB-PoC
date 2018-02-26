@@ -123,7 +123,7 @@ void GraphManager::removeFocusItem()
 
         disconnect(temp,temp->notifyPositionChange,this,this->updateArcsOfNode);
         Nodes.erase(Subject);
-        delete (temp);
+        temp->deleteLater();
     }
     else
     {
@@ -135,7 +135,7 @@ void GraphManager::removeFocusItem()
 
             Arcs.removeAll(temp);
             removeItem(temp);
-            delete (temp);
+            delete temp;
         }
     }
 
