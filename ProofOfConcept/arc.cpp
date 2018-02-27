@@ -86,7 +86,7 @@ QPainterPath Arc::shape() const
 
     //creo la hitbox
     head.clear();
-    head << arrowPoint << arrowP1 << arrowPoint+point*ARROW_HEIGHT-orthogonal*2 << arrowTail-orthogonal*2<<arrowTail-+orthogonal*2<<arrowP2<<arrowHead;
+    head << arrowPoint << arrowP1 << arrowPoint+point*ARROW_HEIGHT-orthogonal*2 << arrowTail-orthogonal*2<<arrowTail-+orthogonal*2<<arrowP2;
     //aggiungo la hitbox
     p.addPolygon(head);
     return p;
@@ -127,6 +127,7 @@ void Arc::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
     QPointF arrowP1 = line().p2()+point*(GraphManager::NODES_RADIUS+ARROW_HEIGHT) - orthogonal*ARROW_HEIGHT;
     QPointF arrowP2 = line().p2()+point*(GraphManager::NODES_RADIUS+ARROW_HEIGHT) + orthogonal*ARROW_HEIGHT;
     //crea la punta
+    QPolygonF arrowHead;
     arrowHead.clear();
     arrowHead << arrowPoint << arrowP1 << arrowP2;
     //disegna la linea dalle due circonferenze non dai centri

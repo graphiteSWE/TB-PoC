@@ -19,12 +19,12 @@ public:
     //metodo chiamato quando l'item cambia posizione
     //ridefinisco affichè inivii al manager che si è spostato
     QVariant itemChange(GraphicsItemChange change, const QVariant &value);
-
-    //ridefinito per problemi se "lancio" l'oggetto dichiara che si è spostato un ultima volta
-    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
-
     //ritorna l'id del nodo
     int getId()const;
+
+    //ridefinito per problemi se "lancio" l'oggetto dichiara che si è spostato un ultima volta
+protected:
+    void mouseReleaseEvent(QGraphicsSceneMouseEvent *event);
 private:
     //serve per creare id Incrementali
     static unsigned int NODE_NUMBER;

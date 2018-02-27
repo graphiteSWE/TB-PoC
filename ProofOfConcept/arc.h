@@ -33,8 +33,6 @@ public:
 private:
     //altezza della freccia
     const static int ARROW_HEIGHT=8;
-    //viene utilizzato per disegnare la punta della freccia
-    QPolygonF arrowHead;
     //colore della freccia, da chi parte e dove arriva se se il nodo di partenza e quello di arrivo collidono
     const QColor myColor;
     int starting;

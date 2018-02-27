@@ -11,7 +11,7 @@ GraphManager::GraphManager():
     QGraphicsScene(),
     Nodes(QVector<Node*>()),
     Arcs(QVector<Arc*>())
-{
+{   /*
     //Per mostrare 3 nodi all inizio
     addNodes(200,200);
     addNodes(50,50);
@@ -19,13 +19,14 @@ GraphManager::GraphManager():
     addLineBetween(Nodes[0],Nodes[1]);
     addLineBetween(Nodes[1],Nodes[0]);
     addLineBetween(Nodes[2],Nodes[1]);
-    addLineBetween(Nodes[2],Nodes[0]);
+    addLineBetween(Nodes[2],Nodes[0]);*/
 }
 
 GraphManager::~GraphManager()
 {
+    clear();
     //cancello le liste
-    for(QVector<Node*>::iterator i=Nodes.begin();i!=Nodes.end();++i)
+    /*for(QVector<Node*>::iterator i=Nodes.begin();i!=Nodes.end();++i)
     {
         //sconnetto il segnale dei nodi
         disconnect(*i,(*i)->notifyPositionChange,this,this->updateArcsOfNode);
@@ -34,7 +35,7 @@ GraphManager::~GraphManager()
     }
     //cancello gli archi
     for(QVector<Arc*>::iterator i=Arcs.begin();i!=Arcs.end();++i)
-        delete (*i);
+        delete (*i);*/
 }
 //slot che osserva il segnale dei nodi
 void GraphManager::nodeMoved(const Node* node)
@@ -46,11 +47,8 @@ void GraphManager::nodeMoved(const Node* node)
 //aggiunge un nodo
 void GraphManager::addNodes(const qreal &x, const qreal &y)
 {
-    //randomizzo il colore for fun sake
-    QColor tmp;
-    tmp.setRgb(qrand() % ((255 + 1) - 0) + 0,qrand() % ((255 + 1) - 0) + 0,qrand() % ((255 + 1) - 0) + 0);
     //creo il nodo e lo aggiungo alla lista
-    Node* t=new Node(x,y,NODES_RADIUS,tmp);
+    Node* t=new Node(x,y,NODES_RADIUS,QColor(Qt::red));
     Nodes.push_back(t);  
     //connetto il segnale di spostamento allo slot
     connect(t,t->notifyPositionChange,this,updateArcsOfNode);
@@ -103,26 +101,34 @@ void GraphManager::removeFocusItem()
     //lo cerca tra i nodi
     QVector<Node*>::iterator Subject=std::find_if(Nodes.begin(),Nodes.end(),[item](const Node* node){return item==node;});
     //se lo trova lo cancella
+
     if(Subject!=Nodes.end()){
         Node * temp=*Subject;
 
+        disconnect(temp,temp->notifyPositionChange,this,this->updateArcsOfNode);
+        temp->setEnabled(false);
+        clearSelection();
+
+        temp->setFlag(QGraphicsItem::ItemIsMovable,0);
+        temp->setFlag(QGraphicsItem::ItemIsSelectable,0);
+        temp->setFlag(QGraphicsItem::ItemSendsScenePositionChanges,0);
         removeItem(temp);
         //trova l'id e cancella tutti gli archi e li rimuove dal modello collegati a tale nodo
         int Id=(*Subject)->getId();
         for(QVector<Arc*>::iterator i=Arcs.begin();i!=Arcs.end();)
-        {
-            if((*i)->getNodeId(Arc::start)==Id||(*i)->getNodeId(Arc::end)==Id)
+        {   Arc * temp=*i;
+            temp->setEnabled(false);
+            if(temp->getNodeId(Arc::start)==Id||temp->getNodeId(Arc::end)==Id)
             {
 
-                removeItem(*i);
-                delete *i;
+                removeItem(temp);
+                delete temp;
                 i=Arcs.erase(i);
             }
             else ++i;
         }
         //cancella il nodo sconnettendo il segnale e rimuovendolo dal modello
 
-        disconnect(temp,temp->notifyPositionChange,this,this->updateArcsOfNode);
         Nodes.erase(Subject);
         temp->deleteLater();
     }

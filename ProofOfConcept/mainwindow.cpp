@@ -68,8 +68,9 @@ void MainWindow::newArc()
 {
 
     errorLog->setText("Seleziona due Nodi");
-    First=0;
+
     Model->clearSelection();
+    First=0;
     connect(Model,SIGNAL(selectionChanged()),this,SLOT(addItem()),Qt::UniqueConnection);
 }
 
