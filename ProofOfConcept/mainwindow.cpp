@@ -41,10 +41,13 @@ MainWindow::MainWindow(QWidget *parent, GraphManager &Scene)
     Layout->addSpacing(100);
     Layout->addWidget(GraphTable);
         GraphTable->setScene(&Scene);
+
+
     connect(ButtonNode,SIGNAL(clicked(bool)),this,SLOT(newNode()));
     connect(ButtonArc,SIGNAL(clicked(bool)),this,SLOT(newArc()));
     connect(ButtonNode2,SIGNAL(clicked(bool)),this,SLOT(removeFocused()));
     mainWin->setLayout(Layout);
+
 }
 
 MainWindow::~MainWindow()
@@ -55,12 +58,12 @@ MainWindow::~MainWindow()
     delete mainWin;
     Model->deleteLater();
 }
+
+
 //dice al model di aggiugere un nodo in posizione 0 0
 void MainWindow::newNode()
 {
-    GraphTable->setUpdatesEnabled(false);
     Model->addNodes(0,0);
-    GraphTable->setUpdatesEnabled(true);
 
 
 }
@@ -84,14 +87,11 @@ void MainWindow::removeFocused()
     //dato che potrebbe essere chiamato senza oggetti in focus non chiedo nemmeno al model l'operazione idem piu avanti
     //se passasse potrebbe generare index out of bound
 
-    GraphTable->setUpdatesEnabled(false);
     if(Model->selectedItems().size()>0)
     {
         First=0;
         Model->removeFocusItem();
     }
-
-    GraphTable->setUpdatesEnabled(true);
 }
 
 
@@ -132,8 +132,6 @@ void MainWindow::addItem()
             }
             //in ogni caso se ho successo o fallisco per dichiaro di non avere alcun oggetto in coda per essere il primo punto
             //di un arco
-
-            GraphTable->setUpdatesEnabled(true);
             First=NULL;
         }
     }

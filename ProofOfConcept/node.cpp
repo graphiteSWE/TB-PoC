@@ -71,6 +71,7 @@ void Node::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
 }
 
+
 int Node::getId() const
 {
     return id;

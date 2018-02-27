@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTimer>
 class GraphManager;
 class QLineEdit;
 class QGraphicsItem;
@@ -20,6 +21,7 @@ private:
     QGraphicsItem *First;
     GraphManager *Model;
     GraphPrinter* GraphTable;
+   // void resizeEvent(QResizeEvent *event);
 private slots:
     void newNode();
     void newArc();

@@ -4,6 +4,7 @@
 #include "arc.h"
 #include "node.h"
 
+#include <QGraphicsView>
 #include <qiterator.h>
 
 
@@ -37,16 +38,25 @@ GraphManager::~GraphManager()
     for(QVector<Arc*>::iterator i=Arcs.begin();i!=Arcs.end();++i)
         delete (*i);*/
 }
+
+void GraphManager::setEnableUpdateViews(bool b)
+{
+    foreach(QGraphicsView*i,views())
+        i->setUpdatesEnabled(b);
+}
 //slot che osserva il segnale dei nodi
 void GraphManager::nodeMoved(const Node* node)
 {
     //aggiorna gli archi relativi al nodo
+    setEnableUpdateViews(false);
     updateArcsOfNode(node);
+    setEnableUpdateViews(true);
 }
 
 //aggiunge un nodo
 void GraphManager::addNodes(const qreal &x, const qreal &y)
 {
+    setEnableUpdateViews(false);
     //creo il nodo e lo aggiungo alla lista
     Node* t=new Node(x,y,NODES_RADIUS,QColor(Qt::red));
     Nodes.push_back(t);  
@@ -54,10 +64,11 @@ void GraphManager::addNodes(const qreal &x, const qreal &y)
     connect(t,t->notifyPositionChange,this,updateArcsOfNode);
     //aggiungo l'oggetto al modello in modo tale che sia renderizzato dalla vista
     addItem(t);
+    setEnableUpdateViews(true);
 }
 
 bool GraphManager::addLineBetween(QGraphicsItem *Node1, QGraphicsItem *Node2)
-{
+{   setEnableUpdateViews(false);
     //cerco nella mia lista di nodi se esiste quel puntatore a QGraphicsItem
     QVector<Node*>::iterator item1=std::find_if(Nodes.begin(),Nodes.end(),[Node1](const Node* item){return Node1==item;});
     QVector<Node*>::iterator item2=std::find_if(Nodes.begin(),Nodes.end(),[Node2](const Node* item){return Node2==item;});
@@ -89,13 +100,14 @@ bool GraphManager::addLineBetween(QGraphicsItem *Node1, QGraphicsItem *Node2)
             nodesExists=false;
         }
     }
+    setEnableUpdateViews(true);
     //true sse è stato aggiunto un arco
     return nodesExists;
 }
 
 //elimina l'oggetto in focus index out of bound se viene chiamata senza controllare che ci sia un oggetto in focus
 void GraphManager::removeFocusItem()
-{
+{   setEnableUpdateViews(false);
     //prende l'oggetto in focus
     QGraphicsItem* item=selectedItems()[0];
     //lo cerca tra i nodi
@@ -144,7 +156,7 @@ void GraphManager::removeFocusItem()
             delete temp;
         }
     }
-
+    setEnableUpdateViews(true);
 }
 //aggiorna gli archi del nodo
 void GraphManager::updateArcsOfNode(const Node *node)

@@ -29,7 +29,10 @@ public:
 private:
     QVector<Node*> Nodes;
     QVector<Arc*> Arcs;
+
+    void setEnableUpdateViews(bool b);
 public slots:
+    //
     //quando un nodo si sposta lo segnala a questo slot
     void nodeMoved(const Node* node);
 
