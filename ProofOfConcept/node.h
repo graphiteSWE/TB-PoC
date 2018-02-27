@@ -1,18 +1,18 @@
 #ifndef NODE_H
 #define NODE_H
 
-#include <QGraphicsLineItem>
-
+#include <QGraphicsObject>
 
 class Arc;
 //eredita da qobject per avere la possibilita di avere i signal e da qgraphicsEllipse perchè è un cerchio
-class Node : public QObject,public QGraphicsEllipseItem
+class Node : public QGraphicsObject
 {
     Q_OBJECT
+    Q_INTERFACES(QGraphicsItem)
 public:
     //costruisco un nodo data la posizione del centro nel piano il suo raggio e il colore l'importance decide quando gli oggetti sono sovrapposti chi ha piu visibilità
     Node (const qreal& x, const qreal& y, const qreal& radius, const QColor &color, const int importance=1);
-
+    QRectF boundingRect()const;
 
     //ridefinisco paint per stampare l'id al centro del nodo
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *,QWidget *);

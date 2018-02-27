@@ -1,13 +1,13 @@
 
 #include "node.h"
 #include <QPainter>
+#include <QStyleOptionGraphicsItem>
 
 //id inizia da 1
 unsigned int Node::NODE_NUMBER=0;
 
 Node::Node(const qreal &x, const qreal &y, const qreal &radius,const QColor& color,const int importance)
-    : QObject()
-    , QGraphicsEllipseItem(-radius,-radius,2*radius,2*radius)
+    : QGraphicsObject(nullptr)
     , id(++NODE_NUMBER)
     , myColor(color)
     , myRadius(radius)
@@ -17,31 +17,34 @@ Node::Node(const qreal &x, const qreal &y, const qreal &radius,const QColor& col
     setFlag(QGraphicsItem::ItemIsMovable);
     setFlag(QGraphicsItem::ItemIsSelectable);
     setFlag(QGraphicsItem::ItemSendsScenePositionChanges);
-    setBrush(myColor);
-    setPos(x,y);
+    setX(x);
+    setY(y);
     setZValue(importance);
+}
+
+QRectF Node::boundingRect() const
+{
+    return QRectF(-myRadius,-myRadius,myRadius*2,myRadius*2);
 }
 
 void Node::paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWidget * p)
 {
     //se l'oggetto è selezionato diventa giallo altrimenti ha il suo colore
-    QPen myPen = pen();
+    QPen myPen = QPen(Qt::black);
+    QBrush Brush = QBrush(myColor);
     if(isSelected()){
 
-        setBrush(Qt::yellow);
+        painter->setBrush(Qt::yellow);
     }
-    else
-    {
-        setBrush(myColor);
+    else{
+        painter->setBrush(myColor);
     }
 
-    myPen.setColor(myColor);
     painter->setPen(myPen);
-    painter->setBrush(myColor);
     //disegna il cerchio
-    QGraphicsEllipseItem::paint(painter,option,p);
+    painter->drawEllipse(boundingRect());
     //disegna l'id al centro
-    painter->drawText(rect().center(),QVariant(id).toString());
+    painter->drawText(0,0,QVariant(id).toString());
 
 }
 
@@ -58,9 +61,10 @@ QVariant Node::itemChange(QGraphicsItem::GraphicsItemChange change, const QVaria
 }
 
 void Node::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
-{    notifyPositionChange(this);
+{
     //chiamo a super perchè è lui a mettere le nuove coordinate al nodo grafico quando viene spostato
-    QGraphicsEllipseItem::mouseReleaseEvent(event);
+    QGraphicsItem::mouseReleaseEvent(event);
+    notifyPositionChange(this);
     //visto che si possono lanciare gli oggetti circa dopo che ho mollato il mouse potrebbe spostarsi l'oggetto di un pò
     //in realtà non è un vero lancio ma l'evento itemChange avviene ad un determinato frame rate quindi quando mollo il mouse potrebbe
     //non aggiornarsi questo lo obbliga ad un ultimo refresh
