@@ -16,10 +16,10 @@ MainWindow::MainWindow(QWidget *parent, GraphManager &Scene)
       mainWin(new QWidget()),
       errorLog(new QLineEdit(mainWin)),
       First(nullptr),
-    Model(&Scene)
+      Model(&Scene),
+      GraphTable(new GraphPrinter(mainWin))
 {
     //dico alla View che disegna chi è il suo model
-    GraphPrinter* GraphTable(new GraphPrinter(mainWin));
     QPushButton* ButtonNode(new QPushButton("Nodino ++",mainWin));
     QPushButton* ButtonArc(new QPushButton("Archetti ++",mainWin));
     QPushButton* ButtonNode2(new QPushButton("Cancella bersaglio",mainWin));
@@ -58,7 +58,11 @@ MainWindow::~MainWindow()
 //dice al model di aggiugere un nodo in posizione 0 0
 void MainWindow::newNode()
 {
+    GraphTable->setUpdatesEnabled(false);
     Model->addNodes(0,0);
+    GraphTable->setUpdatesEnabled(true);
+
+
 }
 
 //connette l'evento del modello che segnala se un oggetto è stato messo in focus
@@ -79,11 +83,15 @@ void MainWindow::removeFocused()
 {
     //dato che potrebbe essere chiamato senza oggetti in focus non chiedo nemmeno al model l'operazione idem piu avanti
     //se passasse potrebbe generare index out of bound
+
+    GraphTable->setUpdatesEnabled(false);
     if(Model->selectedItems().size()>0)
     {
         First=0;
         Model->removeFocusItem();
     }
+
+    GraphTable->setUpdatesEnabled(true);
 }
 
 
@@ -108,6 +116,8 @@ void MainWindow::addItem()
         {
             //se ho un altro oggetto in focus provo a creare la linea
             //il modello controlla che gli oggetti siano nodi etc
+
+            GraphTable->setUpdatesEnabled(false);
             if(Model->addLineBetween(First,Model->selectedItems()[0]))
             {
                 //se ha successo disconnetto il segnale di questo evento
@@ -122,6 +132,8 @@ void MainWindow::addItem()
             }
             //in ogni caso se ho successo o fallisco per dichiaro di non avere alcun oggetto in coda per essere il primo punto
             //di un arco
+
+            GraphTable->setUpdatesEnabled(true);
             First=NULL;
         }
     }

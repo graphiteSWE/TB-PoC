@@ -120,7 +120,6 @@ void GraphManager::removeFocusItem()
             temp->setEnabled(false);
             if(temp->getNodeId(Arc::start)==Id||temp->getNodeId(Arc::end)==Id)
             {
-
                 removeItem(temp);
                 delete temp;
                 i=Arcs.erase(i);

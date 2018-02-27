@@ -5,6 +5,7 @@
 class GraphManager;
 class QLineEdit;
 class QGraphicsItem;
+class GraphPrinter;
 //agglomerato di roba per
 class MainWindow : public QMainWindow
 {
@@ -18,7 +19,7 @@ private:
     QLineEdit* errorLog;
     QGraphicsItem *First;
     GraphManager *Model;
-
+    GraphPrinter* GraphTable;
 private slots:
     void newNode();
     void newArc();
