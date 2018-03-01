@@ -8,7 +8,6 @@ class Arc;
 class Node : public QGraphicsObject
 {
     Q_OBJECT
-    Q_INTERFACES(QGraphicsItem)
 public:
     //costruisco un nodo data la posizione del centro nel piano il suo raggio e il colore l'importance decide quando gli oggetti sono sovrapposti chi ha piu visibilità
     Node (const qreal& x, const qreal& y, const qreal& radius, const QColor &color, const int importance=1);
