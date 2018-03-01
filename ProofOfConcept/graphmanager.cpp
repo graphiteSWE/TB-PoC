@@ -61,7 +61,7 @@ void GraphManager::addNodes(const qreal &x, const qreal &y)
     Node* t=new Node(x,y,NODES_RADIUS,QColor(Qt::red));
     Nodes.push_back(t);  
     //connetto il segnale di spostamento allo slot
-    connect(t,t->notifyPositionChange,this,updateArcsOfNode);
+    connect(t,SIGNAL(notifyPositionChange(const Node*)),this,SLOT(nodeMoved(const Node*)));
     //aggiungo l'oggetto al modello in modo tale che sia renderizzato dalla vista
     addItem(t);
     setEnableUpdateViews(true);
@@ -117,7 +117,7 @@ void GraphManager::removeFocusItem()
     if(Subject!=Nodes.end()){
         Node * temp=*Subject;
 
-        disconnect(temp,temp->notifyPositionChange,this,this->updateArcsOfNode);
+        disconnect(temp,SIGNAL(notifyPositionChange(const Node*)),this,SLOT(nodeMoved(const Node*)));
         temp->setEnabled(false);
         clearSelection();
 
