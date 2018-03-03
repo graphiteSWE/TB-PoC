@@ -1,0 +1,6 @@
+/home/marco/Scrivania/ProofOfConcept/QT/test/CMakeFiles/edit_cache.dir
+/home/marco/Scrivania/ProofOfConcept/QT/test/CMakeFiles/rebuild_cache.dir
+/home/marco/Scrivania/ProofOfConcept/QT/test/src/CMakeFiles/edit_cache.dir
+/home/marco/Scrivania/ProofOfConcept/QT/test/src/CMakeFiles/rebuild_cache.dir
+/home/marco/Scrivania/ProofOfConcept/QT/test/src/CMakeFiles/QTGraph.dir
+/home/marco/Scrivania/ProofOfConcept/QT/test/src/CMakeFiles/QTGraph_automoc.dir

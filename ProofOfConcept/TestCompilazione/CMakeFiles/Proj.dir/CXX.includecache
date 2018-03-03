@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-../QT/graphmanager.h
+../QT/header/graphmanager.h
 qgraphicsscene.h
 -
 
-../QT/mainwindow.h
+../QT/header/mainwindow.h
 QMainWindow
 -
 QTimer

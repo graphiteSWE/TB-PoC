@@ -3,7 +3,6 @@
 #include "graphmanager.h"
 #include "mainwindow.h"
 #include <QTime>
-
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);

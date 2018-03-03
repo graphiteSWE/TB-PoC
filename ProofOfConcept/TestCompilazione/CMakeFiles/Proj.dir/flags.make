@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC   -fPIC -std=gnu++11
 
 CXX_DEFINES = -DQT_CORE_LIB -DQT_GUI_LIB -DQT_NO_DEBUG -DQT_WIDGETS_LIB
 
-CXX_INCLUDES = -I/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione -I/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT 
+CXX_INCLUDES = -I/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione -I/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept -I/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT/header -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -isystem /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT -I/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT/INCLUDE_DIRECTORIES 
 

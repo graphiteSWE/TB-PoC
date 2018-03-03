@@ -63,8 +63,8 @@ CMAKE_BINARY_DIR = /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompil
 # Target rules for target CMakeFiles/Proj.dir
 
 # All Build rule for target.
-CMakeFiles/Proj.dir/all: QT/CMakeFiles/QTGraph.dir/all
 CMakeFiles/Proj.dir/all: CMakeFiles/Proj_automoc.dir/all
+CMakeFiles/Proj.dir/all: QT/CMakeFiles/QTGraph.dir/all
 	$(MAKE) -f CMakeFiles/Proj.dir/build.make CMakeFiles/Proj.dir/depend
 	$(MAKE) -f CMakeFiles/Proj.dir/build.make CMakeFiles/Proj.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/CMakeFiles --progress-num=1,2,3 "Built target Proj"

@@ -4,8 +4,8 @@
 CMakeFiles/Proj.dir/Proj_automoc.cpp.o
  /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/Proj_automoc.cpp
 CMakeFiles/Proj.dir/main.cpp.o
- ../QT/graphmanager.h
- ../QT/mainwindow.h
+ ../QT/header/graphmanager.h
+ ../QT/header/mainwindow.h
  /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/main.cpp
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QTime
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QTimer

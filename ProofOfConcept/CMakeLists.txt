@@ -7,6 +7,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 add_subdirectory(QT)
 
+include_directories(QT/header)
 find_package(Qt5Widgets REQUIRED)
 include_directories(${Qt5Widgets_INCLUDES})  
 add_definitions(${Qt5Widgets_DEFINITIONS})
@@ -29,25 +30,4 @@ QT5_WRAP_CPP( MOC_SRCS ${MOC_HEADERS} )
 add_executable(Proj ${SOURCES} ${MOC_SRCS} ${RES_SOURCES} ${UI_HEADERS} )
 
 target_link_libraries( Proj ${Qt5Widgets_LIBRARIES} QTGraph)
-# generate proper GUI program on specified platform
-if(WIN32) # Check if we are on Windows
-	if(MSVC) # Check if we are using the Visual Studio compiler
-		set_target_properties(${PROJECT_NAME} PROPERTIES
-			WIN32_EXECUTABLE YES
-			LINK_FLAGS "/ENTRY:mainCRTStartup"
-		)
-	elseif(CMAKE_COMPILER_IS_GNUCXX)
-			# SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -mwindows") # Not tested
-	else()
-		message(SEND_ERROR "You are using an unsupported Windows compiler! (Not MSVC or GCC)")
-	endif(MSVC)
-elseif(APPLE)
-	set_target_properties(${PROJECT_NAME} PROPERTIES
-			MACOSX_BUNDLE YES
-	)
-elseif(UNIX)
-	# Nothing special required
-else()
-	message(SEND_ERROR "You are on an unsupported platform! (Not Win32, Mac OS X or Unix)")
-endif(WIN32)
 

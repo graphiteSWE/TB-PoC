@@ -1,4 +1,0 @@
-/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/Test/CMakeFiles/edit_cache.dir
-/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/Test/CMakeFiles/rebuild_cache.dir
-/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/Test/CMakeFiles/QTGraphDrawer.dir
-/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/Test/CMakeFiles/QTGraphDrawer_automoc.dir

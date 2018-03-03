@@ -3,8 +3,8 @@
 
 CMakeFiles/Proj.dir/Proj_automoc.cpp.o: Proj_automoc.cpp
 
-CMakeFiles/Proj.dir/main.cpp.o: ../QT/graphmanager.h
-CMakeFiles/Proj.dir/main.cpp.o: ../QT/mainwindow.h
+CMakeFiles/Proj.dir/main.cpp.o: ../QT/header/graphmanager.h
+CMakeFiles/Proj.dir/main.cpp.o: ../QT/header/mainwindow.h
 CMakeFiles/Proj.dir/main.cpp.o: ../main.cpp
 CMakeFiles/Proj.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QTime
 CMakeFiles/Proj.dir/main.cpp.o: /usr/include/x86_64-linux-gnu/qt5/QtCore/QTimer

@@ -5,11 +5,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/QTGraph_automoc.cpp" "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph.dir/QTGraph_automoc.cpp.o"
-  "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT/arc.cpp" "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph.dir/arc.cpp.o"
-  "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT/graphmanager.cpp" "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph.dir/graphmanager.cpp.o"
-  "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT/graphprinter.cpp" "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph.dir/graphprinter.cpp.o"
-  "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT/mainwindow.cpp" "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph.dir/mainwindow.cpp.o"
-  "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT/node.cpp" "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph.dir/node.cpp.o"
+  "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT/src/arc.cpp" "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph.dir/src/arc.cpp.o"
+  "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT/src/graphmanager.cpp" "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph.dir/src/graphmanager.cpp.o"
+  "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT/src/graphprinter.cpp" "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph.dir/src/graphprinter.cpp.o"
+  "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT/src/mainwindow.cpp" "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph.dir/src/mainwindow.cpp.o"
+  "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/QT/src/node.cpp" "/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph.dir/src/node.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -25,6 +25,9 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "QT"
   "../QT"
+  "../QT/header"
+  "../QT/src"
+  "../QT/INCLUDE_DIRECTORIES"
   "/usr/include/x86_64-linux-gnu/qt5"
   "/usr/include/x86_64-linux-gnu/qt5/QtWidgets"
   "/usr/include/x86_64-linux-gnu/qt5/QtGui"

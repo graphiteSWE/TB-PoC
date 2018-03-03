@@ -167,140 +167,140 @@ QTGraph_automoc.cpp.s:
 	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/QTGraph_automoc.cpp.s
 .PHONY : QTGraph_automoc.cpp.s
 
-arc.o: arc.cpp.o
+src/arc.o: src/arc.cpp.o
 
-.PHONY : arc.o
-
-# target to build an object file
-arc.cpp.o:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/arc.cpp.o
-.PHONY : arc.cpp.o
-
-arc.i: arc.cpp.i
-
-.PHONY : arc.i
-
-# target to preprocess a source file
-arc.cpp.i:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/arc.cpp.i
-.PHONY : arc.cpp.i
-
-arc.s: arc.cpp.s
-
-.PHONY : arc.s
-
-# target to generate assembly for a file
-arc.cpp.s:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/arc.cpp.s
-.PHONY : arc.cpp.s
-
-graphmanager.o: graphmanager.cpp.o
-
-.PHONY : graphmanager.o
+.PHONY : src/arc.o
 
 # target to build an object file
-graphmanager.cpp.o:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/graphmanager.cpp.o
-.PHONY : graphmanager.cpp.o
+src/arc.cpp.o:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/arc.cpp.o
+.PHONY : src/arc.cpp.o
 
-graphmanager.i: graphmanager.cpp.i
+src/arc.i: src/arc.cpp.i
 
-.PHONY : graphmanager.i
+.PHONY : src/arc.i
 
 # target to preprocess a source file
-graphmanager.cpp.i:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/graphmanager.cpp.i
-.PHONY : graphmanager.cpp.i
+src/arc.cpp.i:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/arc.cpp.i
+.PHONY : src/arc.cpp.i
 
-graphmanager.s: graphmanager.cpp.s
+src/arc.s: src/arc.cpp.s
 
-.PHONY : graphmanager.s
+.PHONY : src/arc.s
 
 # target to generate assembly for a file
-graphmanager.cpp.s:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/graphmanager.cpp.s
-.PHONY : graphmanager.cpp.s
+src/arc.cpp.s:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/arc.cpp.s
+.PHONY : src/arc.cpp.s
 
-graphprinter.o: graphprinter.cpp.o
+src/graphmanager.o: src/graphmanager.cpp.o
 
-.PHONY : graphprinter.o
+.PHONY : src/graphmanager.o
 
 # target to build an object file
-graphprinter.cpp.o:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/graphprinter.cpp.o
-.PHONY : graphprinter.cpp.o
+src/graphmanager.cpp.o:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/graphmanager.cpp.o
+.PHONY : src/graphmanager.cpp.o
 
-graphprinter.i: graphprinter.cpp.i
+src/graphmanager.i: src/graphmanager.cpp.i
 
-.PHONY : graphprinter.i
+.PHONY : src/graphmanager.i
 
 # target to preprocess a source file
-graphprinter.cpp.i:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/graphprinter.cpp.i
-.PHONY : graphprinter.cpp.i
+src/graphmanager.cpp.i:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/graphmanager.cpp.i
+.PHONY : src/graphmanager.cpp.i
 
-graphprinter.s: graphprinter.cpp.s
+src/graphmanager.s: src/graphmanager.cpp.s
 
-.PHONY : graphprinter.s
+.PHONY : src/graphmanager.s
 
 # target to generate assembly for a file
-graphprinter.cpp.s:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/graphprinter.cpp.s
-.PHONY : graphprinter.cpp.s
+src/graphmanager.cpp.s:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/graphmanager.cpp.s
+.PHONY : src/graphmanager.cpp.s
 
-mainwindow.o: mainwindow.cpp.o
+src/graphprinter.o: src/graphprinter.cpp.o
 
-.PHONY : mainwindow.o
+.PHONY : src/graphprinter.o
 
 # target to build an object file
-mainwindow.cpp.o:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/mainwindow.cpp.o
-.PHONY : mainwindow.cpp.o
+src/graphprinter.cpp.o:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/graphprinter.cpp.o
+.PHONY : src/graphprinter.cpp.o
 
-mainwindow.i: mainwindow.cpp.i
+src/graphprinter.i: src/graphprinter.cpp.i
 
-.PHONY : mainwindow.i
+.PHONY : src/graphprinter.i
 
 # target to preprocess a source file
-mainwindow.cpp.i:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/mainwindow.cpp.i
-.PHONY : mainwindow.cpp.i
+src/graphprinter.cpp.i:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/graphprinter.cpp.i
+.PHONY : src/graphprinter.cpp.i
 
-mainwindow.s: mainwindow.cpp.s
+src/graphprinter.s: src/graphprinter.cpp.s
 
-.PHONY : mainwindow.s
+.PHONY : src/graphprinter.s
 
 # target to generate assembly for a file
-mainwindow.cpp.s:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/mainwindow.cpp.s
-.PHONY : mainwindow.cpp.s
+src/graphprinter.cpp.s:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/graphprinter.cpp.s
+.PHONY : src/graphprinter.cpp.s
 
-node.o: node.cpp.o
+src/mainwindow.o: src/mainwindow.cpp.o
 
-.PHONY : node.o
+.PHONY : src/mainwindow.o
 
 # target to build an object file
-node.cpp.o:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/node.cpp.o
-.PHONY : node.cpp.o
+src/mainwindow.cpp.o:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/mainwindow.cpp.o
+.PHONY : src/mainwindow.cpp.o
 
-node.i: node.cpp.i
+src/mainwindow.i: src/mainwindow.cpp.i
 
-.PHONY : node.i
+.PHONY : src/mainwindow.i
 
 # target to preprocess a source file
-node.cpp.i:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/node.cpp.i
-.PHONY : node.cpp.i
+src/mainwindow.cpp.i:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/mainwindow.cpp.i
+.PHONY : src/mainwindow.cpp.i
 
-node.s: node.cpp.s
+src/mainwindow.s: src/mainwindow.cpp.s
 
-.PHONY : node.s
+.PHONY : src/mainwindow.s
 
 # target to generate assembly for a file
-node.cpp.s:
-	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/node.cpp.s
-.PHONY : node.cpp.s
+src/mainwindow.cpp.s:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/mainwindow.cpp.s
+.PHONY : src/mainwindow.cpp.s
+
+src/node.o: src/node.cpp.o
+
+.PHONY : src/node.o
+
+# target to build an object file
+src/node.cpp.o:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/node.cpp.o
+.PHONY : src/node.cpp.o
+
+src/node.i: src/node.cpp.i
+
+.PHONY : src/node.i
+
+# target to preprocess a source file
+src/node.cpp.i:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/node.cpp.i
+.PHONY : src/node.cpp.i
+
+src/node.s: src/node.cpp.s
+
+.PHONY : src/node.s
+
+# target to generate assembly for a file
+src/node.cpp.s:
+	cd /home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione && $(MAKE) -f QT/CMakeFiles/QTGraph.dir/build.make QT/CMakeFiles/QTGraph.dir/src/node.cpp.s
+.PHONY : src/node.cpp.s
 
 # Help Target
 help:
@@ -315,21 +315,21 @@ help:
 	@echo "... QTGraph_automoc.o"
 	@echo "... QTGraph_automoc.i"
 	@echo "... QTGraph_automoc.s"
-	@echo "... arc.o"
-	@echo "... arc.i"
-	@echo "... arc.s"
-	@echo "... graphmanager.o"
-	@echo "... graphmanager.i"
-	@echo "... graphmanager.s"
-	@echo "... graphprinter.o"
-	@echo "... graphprinter.i"
-	@echo "... graphprinter.s"
-	@echo "... mainwindow.o"
-	@echo "... mainwindow.i"
-	@echo "... mainwindow.s"
-	@echo "... node.o"
-	@echo "... node.i"
-	@echo "... node.s"
+	@echo "... src/arc.o"
+	@echo "... src/arc.i"
+	@echo "... src/arc.s"
+	@echo "... src/graphmanager.o"
+	@echo "... src/graphmanager.i"
+	@echo "... src/graphmanager.s"
+	@echo "... src/graphprinter.o"
+	@echo "... src/graphprinter.i"
+	@echo "... src/graphprinter.s"
+	@echo "... src/mainwindow.o"
+	@echo "... src/mainwindow.i"
+	@echo "... src/mainwindow.s"
+	@echo "... src/node.o"
+	@echo "... src/node.i"
+	@echo "... src/node.s"
 .PHONY : help
 
 
