@@ -1,8 +1,0 @@
-/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/CMakeFiles/edit_cache.dir
-/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/CMakeFiles/rebuild_cache.dir
-/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/CMakeFiles/Proj.dir
-/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/CMakeFiles/Proj_automoc.dir
-/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/edit_cache.dir
-/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/rebuild_cache.dir
-/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph.dir
-/home/marco/Scrivania/TB-PoC/TB-PoC/ProofOfConcept/TestCompilazione/QT/CMakeFiles/QTGraph_automoc.dir

@@ -1,1 +1,0 @@
-/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,score_word_pos.spi.1 -o ../../../lib/score_word_pos.spi.1.0.0 CMakeFiles/score_word_pos_plugin.dir/src/plugin.c.o CMakeFiles/score_word_pos_plugin.dir/src/word_pos.c.o ../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

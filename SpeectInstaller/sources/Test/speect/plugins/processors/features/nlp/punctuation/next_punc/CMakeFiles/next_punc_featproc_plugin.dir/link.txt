@@ -1,1 +1,0 @@
-/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,next_punc_featproc.spi.1 -o ../../../../../lib/next_punc_featproc.spi.1.0.0 CMakeFiles/next_punc_featproc_plugin.dir/src/plugin.c.o CMakeFiles/next_punc_featproc_plugin.dir/src/next_punc.c.o ../../../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

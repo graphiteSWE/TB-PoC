@@ -1,1 +1,0 @@
-/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,featproc_cb.spi.1 -o ../../../lib/featproc_cb.spi.1.0.0 CMakeFiles/featproc_cb_plugin.dir/src/plugin.c.o CMakeFiles/featproc_cb_plugin.dir/src/featproc_callback.c.o ../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

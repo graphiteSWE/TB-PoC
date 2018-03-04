@@ -1,1 +1,0 @@
-/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,lexicon.spi.1 -o ../../lib/lexicon.spi.1.0.0 CMakeFiles/lexicon_plugin.dir/src/plugin.c.o CMakeFiles/lexicon_plugin.dir/src/lexicon.c.o ../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

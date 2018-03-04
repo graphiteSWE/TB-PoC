@@ -60,9 +60,9 @@ case "$1" in
     "build")
         # Compile and install speect
         BASEDIR=`pwd`
-        mkdir -p builds/"$PLATFORM"/DeSpeect
-        cd builds/"$PLATFORM"/DeSpeect
-        cmake "$BASEDIR"/sources                                           \
+        mkdir -p builds/"$PLATFORM"/Speect
+        cd builds/"$PLATFORM"/Speect
+        cmake "$BASEDIR"/sources/speect                                           \
               -DCMAKE_BUILD_TYPE=Debug                                            \
               -DCMAKE_INSTALL_PREFIX="$BASEDIR"/install                           \
               -DWANT_TESTS=OFF                                                     \
@@ -77,9 +77,9 @@ case "$1" in
         ;;
     "run")
         # Run an example
-        ./builds/"$PLATFORM"/DeSpeect/speect_test -m text -t "I love Cute" -v "`pwd`"/voices/cmu_arctic_slt/voice.json -o tmp.wav
+        #./builds/"$PLATFORM"/DeSpeect/speect_test -m text -t "I love Cute" -v "`pwd`"/voices/cmu_arctic_slt/voice.json -o tmp.wav
         cat <<EOF
-        ./builds/"$PLATFORM"/DeSpeect/speect_test -m text -t "I love Cute" -v "`pwd`"/voices/cmu_arctic_slt/voice.json -o tmp.wav
+        Hai compilato correttamente Speect
 EOF
         ;;
     "clean")
@@ -87,16 +87,16 @@ EOF
 	rm -fr install
 	rm -f tmp.wav*
 	;;
-    "no-download")
+    "download")
+        "$0" download
+        "$0" download_deps
+        "$0" extract_deps
         "$0" build_deps
         "$0" build
         "$0" run
         ;;
     *)
-        "$0" download
-        "$0" download_deps
-        "$0" extract_deps
-        "$0" build_deps
+	"$0" build_deps
         "$0" build
         "$0" run
         ;;

@@ -1,1 +1,0 @@
-/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,array_int.spi.1 -o ../../../lib/array_int.spi.1.0.0 CMakeFiles/array_int_plugin.dir/src/plugin.c.o CMakeFiles/array_int_plugin.dir/src/array_int.c.o ../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

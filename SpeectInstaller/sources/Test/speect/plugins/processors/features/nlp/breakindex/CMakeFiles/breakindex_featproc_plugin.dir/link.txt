@@ -1,1 +1,0 @@
-/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,breakindex_featproc.spi.1 -o ../../../../lib/breakindex_featproc.spi.1.0.0 CMakeFiles/breakindex_featproc_plugin.dir/src/plugin.c.o CMakeFiles/breakindex_featproc_plugin.dir/src/breakindex.c.o ../../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 
