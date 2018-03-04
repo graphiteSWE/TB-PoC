@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,addendum.spi.1 -o ../../lib/addendum.spi.1.0.0 CMakeFiles/addendum_plugin.dir/src/plugin.c.o CMakeFiles/addendum_plugin.dir/src/addendum.c.o ../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

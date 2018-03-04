@@ -1,0 +1,2 @@
+/usr/bin/ar qc libQTGraph.a  CMakeFiles/QTGraph.dir/src/mainwindow.cpp.o CMakeFiles/QTGraph.dir/src/node.cpp.o CMakeFiles/QTGraph.dir/src/graphmanager.cpp.o CMakeFiles/QTGraph.dir/src/arc.cpp.o CMakeFiles/QTGraph.dir/src/graphprinter.cpp.o CMakeFiles/QTGraph.dir/QTGraph_automoc.cpp.o
+/usr/bin/ranlib libQTGraph.a

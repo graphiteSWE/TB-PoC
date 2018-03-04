@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<maryxml xmlns="http://mary.dfki.de/2002/MaryXML" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="0.5" xml:lang="undefined"><p><s><mtu orig="I"><t ph="ay">i<syllable><ph p="ay"/></syllable></t></mtu><t ph="l ah v">love<syllable><ph p="l"/><ph p="ah"/><ph p="v"/></syllable></t><mtu orig="Cute"><t ph="k y uw t">cute<syllable><ph p="k"/><ph p="y"/><ph p="uw"/><ph p="t"/></syllable></t></mtu></s></p></maryxml>

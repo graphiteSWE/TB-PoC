@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,cost_function.spi.1 -o ../../lib/cost_function.spi.1.0.0 CMakeFiles/cost_function_plugin.dir/src/plugin.c.o CMakeFiles/cost_function_plugin.dir/src/cost_function.c.o ../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

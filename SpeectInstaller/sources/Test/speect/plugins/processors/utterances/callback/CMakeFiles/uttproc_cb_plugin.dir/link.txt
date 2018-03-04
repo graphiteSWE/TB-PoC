@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,uttproc_cb.spi.1 -o ../../../lib/uttproc_cb.spi.1.0.0 CMakeFiles/uttproc_cb_plugin.dir/src/plugin.c.o CMakeFiles/uttproc_cb_plugin.dir/src/uttproc_callback.c.o ../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

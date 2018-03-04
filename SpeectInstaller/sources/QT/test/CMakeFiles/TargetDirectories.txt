@@ -1,0 +1,4 @@
+/home/marco/Scrivania/SpeectInstaller/sources/speect/engine/tests/QT/test/CMakeFiles/edit_cache.dir
+/home/marco/Scrivania/SpeectInstaller/sources/speect/engine/tests/QT/test/CMakeFiles/rebuild_cache.dir
+/home/marco/Scrivania/SpeectInstaller/sources/speect/engine/tests/QT/test/CMakeFiles/QTGraph.dir
+/home/marco/Scrivania/SpeectInstaller/sources/speect/engine/tests/QT/test/CMakeFiles/QTGraph_automoc.dir

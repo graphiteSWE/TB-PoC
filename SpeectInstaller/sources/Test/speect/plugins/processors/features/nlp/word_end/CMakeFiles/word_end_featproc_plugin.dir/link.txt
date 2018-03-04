@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,word_end_featproc.spi.1 -o ../../../../lib/word_end_featproc.spi.1.0.0 CMakeFiles/word_end_featproc_plugin.dir/src/plugin.c.o CMakeFiles/word_end_featproc_plugin.dir/src/word_end.c.o ../../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

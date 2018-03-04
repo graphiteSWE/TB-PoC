@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,word_break_featproc.spi.1 -o ../../../../lib/word_break_featproc.spi.1.0.0 CMakeFiles/word_break_featproc_plugin.dir/src/plugin.c.o CMakeFiles/word_break_featproc_plugin.dir/src/word_break.c.o ../../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

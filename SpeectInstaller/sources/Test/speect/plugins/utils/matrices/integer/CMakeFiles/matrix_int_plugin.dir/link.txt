@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,matrix_int.spi.1 -o ../../../lib/matrix_int.spi.1.0.0 CMakeFiles/matrix_int_plugin.dir/src/plugin.c.o CMakeFiles/matrix_int_plugin.dir/src/matrix_int.c.o ../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

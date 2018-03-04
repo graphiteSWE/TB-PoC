@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,score_spec_dist.spi.1 -o ../../../lib/score_spec_dist.spi.1.0.0 CMakeFiles/score_spec_dist_plugin.dir/src/plugin.c.o CMakeFiles/score_spec_dist_plugin.dir/src/spec_dist.c.o ../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

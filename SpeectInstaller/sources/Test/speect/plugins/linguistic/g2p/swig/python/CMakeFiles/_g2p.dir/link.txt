@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC   -shared  -o ../../../../../swig/python/speect/lib/_g2p.so CMakeFiles/_g2p.dir/__/__/__/__/__/swig/python/speect/g2pPYTHON_wrap.c.o -lpython2.7 ../../../../../engine/lib/libspct-py-native.so.1.1 -lpython2.7 ../../../../../engine/lib/libspct.so.1.1 -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib 

@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC   -shared  -o ../../../../../../swig/python/speect/lib/_ebml.so CMakeFiles/_ebml.dir/__/__/__/__/__/__/swig/python/speect/ebmlPYTHON_wrap.c.o -lpython2.7 ../../../../../../engine/lib/libspct-py-native.so.1.1 -lpython2.7 ../../../../../../engine/lib/libspct.so.1.1 -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib 

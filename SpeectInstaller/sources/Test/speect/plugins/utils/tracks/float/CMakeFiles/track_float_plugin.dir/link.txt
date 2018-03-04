@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,track_float.spi.1 -o ../../../lib/track_float.spi.1.0.0 CMakeFiles/track_float_plugin.dir/src/plugin.c.o CMakeFiles/track_float_plugin.dir/src/track_float.c.o ../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

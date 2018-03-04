@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,syll_ita_it_mivoq.spi.1 -o ../../../../../lib/syll_ita_it_mivoq.spi.1.0.0 CMakeFiles/syll_ita_it_mivoq_plugin.dir/src/plugin.c.o CMakeFiles/syll_ita_it_mivoq_plugin.dir/src/ita_it_mivoq.c.o ../../../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 

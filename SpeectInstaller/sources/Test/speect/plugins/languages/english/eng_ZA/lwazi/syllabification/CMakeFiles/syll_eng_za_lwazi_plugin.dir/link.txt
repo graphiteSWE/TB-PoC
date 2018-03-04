@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC  -W -Wall  -shared -Wl,-soname,syll_eng_za_lwazi.spi.1 -o ../../../../../lib/syll_eng_za_lwazi.spi.1.0.0 CMakeFiles/syll_eng_za_lwazi_plugin.dir/src/plugin.c.o CMakeFiles/syll_eng_za_lwazi_plugin.dir/src/eng_za_lwazi.c.o ../../../../../../engine/lib/libspct.so.1.1 -lm -ldl -lm -Wl,-rpath,/home/marco/Scrivania/SpeectInstaller/sources/Test/speect/engine/lib: 
