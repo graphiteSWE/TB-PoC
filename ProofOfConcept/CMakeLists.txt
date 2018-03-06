@@ -8,6 +8,11 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
+## aggiunta Speect
+find_package(spct REQUIRED)
+include(${spct_DIR}/SpeectConf.cmake)
+include_directories(${SPCT_INCLUDE_DIRS})
+
 ## aggiunta QT
 add_subdirectory(QT)
 include_directories(QT/header)
@@ -20,11 +25,6 @@ set (CMAKE_CXX_STANDARD 11)
 QT5_ADD_RESOURCES( RES_SOURCES ${RESOURCES} )
 QT5_WRAP_UI( UI_HEADERS ${UIS} )
 QT5_WRAP_CPP( MOC_SRCS ${MOC_HEADERS} )
-
-## aggiunta Speect
-find_package(spct REQUIRED)
-include(${spct_DIR}/SpeectConf.cmake)
-include_directories(${SPCT_INCLUDE_DIRS})
 
 ## creazione eseguibile
 add_executable(speect_test speect_test.cpp)
