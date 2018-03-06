@@ -64,7 +64,7 @@ MainWindow::~MainWindow()
 //dice al model di aggiugere un nodo in posizione 0 0
 void MainWindow::newNode()
 {
-    Model->addNodes(0,0);
+    //Model->addNodes(0,0);
 
 
 }

@@ -2,17 +2,34 @@
 
 SpeectNode::SpeectNode(const SItem* data)
 	: data(data)
-	, error(S_SUCCESS)
 	{}
 	
-const SpeectNode* SpeectNode::getNext() const {
+const SpeectNode* SpeectNode::getNext() const
+{
 	s_erc error;
 	return new SpeectNode(SItemNext(data, &error));
 }
 
-bool SpeectNode::hasNext() const {
+bool SpeectNode::hasNext() const
+{
 	s_erc error;
-	return SItemNext(data, &error) == NULL;
+    return SItemNext(data, &error) != NULL;
+}
+
+bool SpeectNode::hasFather() const
+{
+    s_erc error;
+    return SItemParent(data, &error) != NULL;
+}
+bool SpeectNode::hasDaughter() const
+{
+    s_erc error;
+    return SItemDaughter(data, &error) != NULL;
+}
+bool SpeectNode::hasPrev() const
+{
+    s_erc error;
+    return SItemPrev(data, &error) != NULL;
 }
 
 bool SpeectNode::isNextOf(const SpeectNode* other) const {

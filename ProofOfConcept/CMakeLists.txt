@@ -9,7 +9,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 ## aggiunta Speect
-find_package(spct REQUIRED)
+##find_package(spct REQUIRED)
 include(${spct_DIR}/SpeectConf.cmake)
 include_directories(${SPCT_INCLUDE_DIRS})
 

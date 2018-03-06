@@ -6,6 +6,8 @@
 
 #include <QGraphicsView>
 #include <qiterator.h>
+#include <speectnode.h>
+#include <QList>
 
 
 GraphManager::GraphManager():
@@ -39,6 +41,74 @@ GraphManager::~GraphManager()
         delete (*i);*/
 }
 
+void GraphManager::searchRelationship(Node *tmp, QVector<Node *> printed, QList<Node *> toBePrinted)
+{
+    //creo un array di bool con 4 spazi in cui registro se ho trovato padre/figlio/precedente/successivo
+    bool foundFather=false, foundDaughter=false, foundNext=false, foundPrev=false;
+    if(!tmp->getInfo()->hasNext())
+        foundNext=true;
+    if(!tmp->getInfo()->hasFather())
+        foundFather=true;
+    if(!tmp->getInfo()->hasDaughter())
+        foundDaughter=true;
+    if(!tmp->getInfo()->hasPrev())
+        foundPrev=true;
+    //scorro il vettore printed e cerco se sono già stati stampati padre/figlio/precedente/successivo
+
+    QVector<Node*>::iterator it=printed.begin();
+    for(it;it<printed.end(); it++){
+        if(!foundNext&&(*it)->getInfo()->isNextOf(tmp->getInfo()))
+        {
+            foundNext=true;
+            addLineBetween(tmp, *it);
+        }
+        if(!foundFather&&(tmp)->getInfo()->isDaughterOf((*it)->getInfo()))
+        {
+            foundFather=true;
+            addLineBetween(tmp, *it);
+        }
+        if(!foundPrev&&tmp->getInfo()->isNextOf((*it)->getInfo()))
+        {
+            foundPrev=true;
+            addLineBetween(tmp, *it);
+        }
+        if(!foundDaughter&&(*it)->getInfo()->isDaughterOf(tmp->getInfo()))
+        {
+            foundDaughter=true;
+            addLineBetween(tmp, *it);
+        }
+
+    }
+    QList<Node*>::iterator itr=toBePrinted.begin();
+    for(itr;itr<toBePrinted.end(); it++){
+        if(!foundNext&&(*it)->getInfo()->isNextOf(tmp->getInfo()))
+        {
+            foundNext=true;
+            addLineBetween(tmp, *it);
+        }
+        if(!foundFather&&(tmp)->getInfo()->isDaughterOf((*it)->getInfo()))
+        {
+            foundFather=true;
+            addLineBetween(tmp, *it);
+        }
+        if(!foundPrev&&tmp->getInfo()->isNextOf((*it)->getInfo()))
+        {
+            foundPrev=true;
+            addLineBetween(tmp, *it);
+        }
+        if(!foundDaughter&&(*it)->getInfo()->isDaughterOf(tmp->getInfo()))
+        {
+            foundDaughter=true;
+            addLineBetween(tmp, *it);
+        }
+    }
+    if(!foundFather&&tmp->getInfo()->hasFather())
+    {
+        Node* temporaryNode= new Node();
+    }
+
+}
+
 void GraphManager::setEnableUpdateViews(bool b)
 {
     foreach(QGraphicsView*i,views())
@@ -54,16 +124,15 @@ void GraphManager::nodeMoved(const Node* node)
 }
 
 //aggiunge un nodo
-void GraphManager::addNodes(const qreal &x, const qreal &y)
+void GraphManager::addNodes(Node *item)
 {
     setEnableUpdateViews(false);
     //creo il nodo e lo aggiungo alla lista
-    Node* t=new Node(x,y,NODES_RADIUS,QColor(Qt::red));
-    Nodes.push_back(t);  
+    Nodes.push_back(item);
     //connetto il segnale di spostamento allo slot
-    connect(t,SIGNAL(notifyPositionChange(const Node*)),this,SLOT(nodeMoved(const Node*)));
+    connect(item,SIGNAL(notifyPositionChange(const Node*)),this,SLOT(nodeMoved(const Node*)));
     //aggiungo l'oggetto al modello in modo tale che sia renderizzato dalla vista
-    addItem(t);
+    addItem(item);
     setEnableUpdateViews(true);
 }
 
@@ -174,5 +243,28 @@ void GraphManager::updateArcsOfNode(const Node *node)
         {
             arc->updatePosition(Arc::end,node->pos());
         }
+    }
+}
+
+void GraphManager::printLayer(const SpeectNode &start, const QColor &layerColor)
+{
+    QVector<Node*> printed;
+    QList<Node*> toBePrinted;
+
+    int sameLevelNode=0;
+    int level=0;
+    Node* tmp=new Node(&start, qreal(sameLevelNode*4*NODES_RADIUS), qreal(level*4*NODES_RADIUS), qreal(NODES_RADIUS), layerColor);
+    toBePrinted.push_front(tmp);
+    while(!toBePrinted.isEmpty())
+    {
+        tmp=toBePrinted.takeFirst();
+        addNodes(tmp);
+        ++sameLevelNode;
+        if(!tmp->getInfo()->hasNext())
+        {
+            sameLevelNode=0;
+            ++level;
+        }
+        searchRelationship(tmp, printed, toBePrinted); //controlla che non siano già stati trovati i figli dello SpeectNode
     }
 }

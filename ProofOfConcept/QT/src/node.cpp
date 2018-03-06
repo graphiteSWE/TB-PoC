@@ -6,11 +6,12 @@
 //id inizia da 1
 unsigned int Node::NODE_NUMBER=0;
 
-Node::Node(const qreal &x, const qreal &y, const qreal &radius,const QColor& color,const int importance)
+Node::Node(const SpeectNode* info, const qreal &x, const qreal &y, const qreal &radius,const QColor& color,const int importance)
     : QGraphicsObject(nullptr)
     , id(++NODE_NUMBER)
     , myColor(color)
     , myRadius(radius)
+    , info(info)
 {
 
     //setto i flag in modo tale che l'oggetto si possa muovere e invii segnali alla scena quando cambia posizione
@@ -20,6 +21,11 @@ Node::Node(const qreal &x, const qreal &y, const qreal &radius,const QColor& col
     setX(x);
     setY(y);
     setZValue(importance);
+}
+
+const SpeectNode *Node::getInfo() const
+{
+    return info;
 }
 
 QRectF Node::boundingRect() const
@@ -75,6 +81,11 @@ void Node::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 int Node::getId() const
 {
     return id;
+}
+
+bool Node::operator ==(const SpeectNode &NodeInfo) const
+{
+    return info==&NodeInfo;
 }
 
 
