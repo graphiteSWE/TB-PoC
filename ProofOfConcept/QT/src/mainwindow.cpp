@@ -1,6 +1,6 @@
 
 #include "mainwindow.h"
-
+#include "speect.h"
 #include "graphprinter.h"
 #include "graphmanager.h"
 #include <QLineEdit>
@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent, GraphManager &Scene)
 
     QVBoxLayout* Layout(new QVBoxLayout());
     QHBoxLayout* ButtonLayout(new QHBoxLayout());
+    
     //dico che il il grafo è centrato nella pagina principale e lo aggiungo al layout
     this->setCentralWidget(mainWin);
     ButtonLayout->addWidget(ButtonArc);
