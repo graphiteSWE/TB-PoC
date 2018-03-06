@@ -13,7 +13,7 @@ public:
     //costruisco un nodo data la posizione del centro nel piano il suo raggio e il colore l'importance decide quando gli oggetti sono sovrapposti chi ha piu visibilità
     Node (const SpeectNode* info, const qreal& x, const qreal& y, const qreal& radius, const QColor &color, const int importance=1);
 
-    const SpeectNode* getInfo()const;
+    const SpeectNode* getInfo();
     QRectF boundingRect()const;
 
     //ridefinisco paint per stampare l'id al centro del nodo

@@ -2,7 +2,8 @@
 #include "node.h"
 #include <QPainter>
 #include <QStyleOptionGraphicsItem>
-
+#include "speectnode.h"
+#include <iostream>
 //id inizia da 1
 unsigned int Node::NODE_NUMBER=0;
 
@@ -23,7 +24,7 @@ Node::Node(const SpeectNode* info, const qreal &x, const qreal &y, const qreal &
     setZValue(importance);
 }
 
-const SpeectNode *Node::getInfo() const
+const SpeectNode *Node::getInfo()
 {
     return info;
 }
@@ -50,7 +51,7 @@ void Node::paint(QPainter *painter, const QStyleOptionGraphicsItem * option, QWi
     //disegna il cerchio
     painter->drawEllipse(boundingRect());
     //disegna l'id al centro
-    painter->drawText(0,0,QVariant(id).toString());
+    painter->drawText(0,0,QVariant(info->getString()).toString());
 
 }
 

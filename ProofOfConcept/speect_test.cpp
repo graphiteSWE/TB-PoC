@@ -44,6 +44,7 @@
 #include "mainwindow.h"
 #include <QTime>
 #include <iostream>
+#include "speectnode.h"
 
 using namespace std;
 
@@ -307,22 +308,12 @@ quit:
 
 	SPCT_PRINT_AND_WAIT("deleting utterance, press ENTER\n");
 
-	if (utt != NULL) {
+		if (utt != NULL) {
 		SList* l = NULL;
 		const SObject* o = NULL;
 		const char* s = NULL;
 		const SRelation* r = NULL;
 		SItem* item = NULL;
-		
-		QApplication a(argc, argv);
-		//creo un seed per il random per generare colori a caso per i nodi
-		
-		//creo il modello del grafo
-		GraphManager Model;
-
-		//creo la view
-		MainWindow w(0,Model);
-		
 		l = SUtteranceRelationsKeys(utt, &error);
 		
 		if(!SListIsEmpty(l, &error)) {
@@ -330,19 +321,21 @@ quit:
 			s = SObjectGetString(o, &error);
 			
 			//std::cout<<s;
-			
 			r = SUtteranceGetRelation(utt, s, &error);
 			
 			//std::cout<<SRelationName(r, &error);
-			
+
 			item = SRelationHead(r, &error);
-			
-			std::cout<<std::endl<<SItemGetName(item, &error)<<" - "<<std::endl;
-			
-			while(item = SItemNext(item, &error)) {
-				std::cout<<SItemGetName(item, &error)<<std::endl;
-			}
 		}
+		QApplication a(argc, argv);
+		//creo un seed per il random per generare colori a caso per i nodi
+		//creo il modello del grafo
+		GraphManager Model(new SpeectNode(item));
+
+		//creo la view
+		MainWindow w(0,Model);
+		
+		
 
 		//mostro a schermo intero
 		w.showMaximized();

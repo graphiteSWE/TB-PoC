@@ -3,14 +3,14 @@
 
 #include "arc.h"
 #include "node.h"
-
+#include <QColor>
 #include <QGraphicsView>
 #include <qiterator.h>
 #include <speectnode.h>
 #include <QList>
+#include "iostream"
 
-
-GraphManager::GraphManager():
+GraphManager::GraphManager(const SpeectNode* first):
     QGraphicsScene(),
     Nodes(QVector<Node*>()),
     Arcs(QVector<Arc*>())
@@ -23,6 +23,7 @@ GraphManager::GraphManager():
     addLineBetween(Nodes[1],Nodes[0]);
     addLineBetween(Nodes[2],Nodes[1]);
     addLineBetween(Nodes[2],Nodes[0]);*/
+    printLayer(*first,QColor(Qt::blue));
 }
 
 GraphManager::~GraphManager()
@@ -41,24 +42,39 @@ GraphManager::~GraphManager()
         delete (*i);*/
 }
 
-void GraphManager::searchRelationship(Node *tmp, QVector<Node *> printed, QList<Node *> toBePrinted)
+void GraphManager::searchRelationship(QList<Node *>& toBePrinted,const QColor& color)
 {
+    Node* tmp=toBePrinted.takeFirst();
     //creo un array di bool con 4 spazi in cui registro se ho trovato padre/figlio/precedente/successivo
     bool foundFather=false, foundDaughter=false, foundNext=false, foundPrev=false;
     if(!tmp->getInfo()->hasNext())
-        foundNext=true;
+    {
+         foundNext=true;
+        std::cout<<"NoNext"<<std::endl;
+    }
     if(!tmp->getInfo()->hasFather())
+    {   
         foundFather=true;
+        std::cout<<"NoFather"<<std::endl;
+    }
     if(!tmp->getInfo()->hasDaughter())
+    {    
         foundDaughter=true;
+        std::cout<<"NoDaughter"<<std::endl;
+    }
     if(!tmp->getInfo()->hasPrev())
+    {
         foundPrev=true;
+        std::cout<<"NoPrev"<<std::endl;
+    }
+    std::cout<<"END CHECK"<<std::endl<<std::endl;
     //scorro il vettore printed e cerco se sono già stati stampati padre/figlio/precedente/successivo
-
-    QVector<Node*>::iterator it=printed.begin();
-    for(it;it<printed.end(); it++){
+      QVector<Node*>::iterator it=Nodes.begin();
+    for(it;it!=Nodes.end(); it++){
         if(!foundNext&&(*it)->getInfo()->isNextOf(tmp->getInfo()))
         {
+
+            std::cout<<"I'm your next";
             foundNext=true;
             addLineBetween(tmp, *it);
         }
@@ -68,7 +84,7 @@ void GraphManager::searchRelationship(Node *tmp, QVector<Node *> printed, QList<
             addLineBetween(tmp, *it);
         }
         if(!foundPrev&&tmp->getInfo()->isNextOf((*it)->getInfo()))
-        {
+        {   
             foundPrev=true;
             addLineBetween(tmp, *it);
         }
@@ -80,31 +96,44 @@ void GraphManager::searchRelationship(Node *tmp, QVector<Node *> printed, QList<
 
     }
     QList<Node*>::iterator itr=toBePrinted.begin();
-    for(itr;itr<toBePrinted.end(); it++){
-        if(!foundNext&&(*it)->getInfo()->isNextOf(tmp->getInfo()))
+    for(itr;itr!=toBePrinted.end(); itr++){
+        if(!foundNext&&(*itr)->getInfo()->isNextOf(tmp->getInfo()))
         {
             foundNext=true;
-            addLineBetween(tmp, *it);
+            addLineBetween(tmp, *itr);
         }
-        if(!foundFather&&(tmp)->getInfo()->isDaughterOf((*it)->getInfo()))
+        if(!foundFather&&(tmp)->getInfo()->isDaughterOf((*itr)->getInfo()))
         {
             foundFather=true;
-            addLineBetween(tmp, *it);
+            addLineBetween(tmp, *itr);
         }
-        if(!foundPrev&&tmp->getInfo()->isNextOf((*it)->getInfo()))
+        if(!foundPrev&&tmp->getInfo()->isNextOf((*itr)->getInfo()))
         {
             foundPrev=true;
-            addLineBetween(tmp, *it);
+            addLineBetween(tmp, *itr);
         }
-        if(!foundDaughter&&(*it)->getInfo()->isDaughterOf(tmp->getInfo()))
+        if(!foundDaughter&&(*itr)->getInfo()->isDaughterOf(tmp->getInfo()))
         {
             foundDaughter=true;
-            addLineBetween(tmp, *it);
+            addLineBetween(tmp, *itr);
         }
     }
-    if(!foundFather&&tmp->getInfo()->hasFather())
+    Node* temporaryNode=NULL;
+    std::cout<<"found Next:"<<foundNext<<"has Next:"<<tmp->getInfo()->hasNext();
+    if(!foundNext&&tmp->getInfo()->hasNext())
     {
-        Node* temporaryNode= new Node();
+        temporaryNode= new Node(tmp->getInfo()->getNext(),tmp->pos().x()+4*NODES_RADIUS,tmp->pos().y(),NODES_RADIUS,color,1);
+        addNodes(temporaryNode);
+        addLineBetween(tmp,temporaryNode);
+           toBePrinted.push_front(temporaryNode);
+    }
+    if(!foundDaughter&&tmp->getInfo()->hasDaughter())
+    {
+        temporaryNode= new Node(tmp->getInfo()->getDaughter(),tmp->pos().x(),tmp->pos().y()+4*NODES_RADIUS,NODES_RADIUS,color,1);
+        addNodes(temporaryNode);
+        addLineBetween(tmp,temporaryNode);
+        toBePrinted.push_back(temporaryNode);
+
     }
 
 }
@@ -248,23 +277,13 @@ void GraphManager::updateArcsOfNode(const Node *node)
 
 void GraphManager::printLayer(const SpeectNode &start, const QColor &layerColor)
 {
-    QVector<Node*> printed;
     QList<Node*> toBePrinted;
-
     int sameLevelNode=0;
     int level=0;
     Node* tmp=new Node(&start, qreal(sameLevelNode*4*NODES_RADIUS), qreal(level*4*NODES_RADIUS), qreal(NODES_RADIUS), layerColor);
+    addNodes(tmp);
     toBePrinted.push_front(tmp);
     while(!toBePrinted.isEmpty())
-    {
-        tmp=toBePrinted.takeFirst();
-        addNodes(tmp);
-        ++sameLevelNode;
-        if(!tmp->getInfo()->hasNext())
-        {
-            sameLevelNode=0;
-            ++level;
-        }
-        searchRelationship(tmp, printed, toBePrinted); //controlla che non siano già stati trovati i figli dello SpeectNode
-    }
+        searchRelationship(toBePrinted,layerColor);
+
 }

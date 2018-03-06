@@ -25,7 +25,7 @@ public:
 
     void printLayer(const SpeectNode& start, const QColor& layerColor);
 
-    GraphManager();
+    GraphManager(const SpeectNode* data);
     ~GraphManager();
     //raggio dei nodi non so l'unita di misura
     const static int NODES_RADIUS=25;
@@ -33,7 +33,7 @@ private:
     QVector<Node*> Nodes;
     QVector<Arc*> Arcs;
 
-    void searchRelationship(Node* tmp, QVector<Node*> printed, QList<Node*> toBePrinted);
+    void searchRelationship(QList<Node*>& toBePrinted,const QColor& color);
 
     void setEnableUpdateViews(bool b);
 public slots:

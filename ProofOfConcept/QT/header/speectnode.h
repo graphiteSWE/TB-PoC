@@ -15,6 +15,7 @@ public:
 	bool isDaughterOf(const SpeectNode*) const;
 	const SpeectNode* getNext() const;
 	const SpeectNode* getDaughter() const; 
+	const char* getString() const;
 	bool operator == (const SpeectNode& item) const;
 
 
