@@ -7,16 +7,16 @@ class SpeectNode
 {
 public:
 	SpeectNode(const SItem* data);
-	bool hasNext() const;
-    bool hasFather()const;
-    bool hasDaughter()const;
-    bool hasPrev()const;
-	bool isNextOf(const SpeectNode *) const;
-	bool isDaughterOf(const SpeectNode*) const;
+    const bool hasNext() const;
+    const bool hasFather()const;
+    const bool hasDaughter()const;
+    const bool hasPrev()const;
+    const bool isNextOf(const SpeectNode *) const;
+    const bool isDaughterOf(const SpeectNode*) const;
 	const SpeectNode* getNext() const;
 	const SpeectNode* getDaughter() const; 
 	const char* getString() const;
-	bool operator == (const SpeectNode& item) const;
+    const bool operator == (const SpeectNode& item) const;
 
 
 private:

@@ -95,29 +95,6 @@ void GraphManager::searchRelationship(QList<Node *>& toBePrinted,const QColor& c
         }
 
     }
-    QList<Node*>::iterator itr=toBePrinted.begin();
-    for(itr;itr!=toBePrinted.end(); itr++){
-        if(!foundNext&&(*itr)->getInfo()->isNextOf(tmp->getInfo()))
-        {
-            foundNext=true;
-            addLineBetween(tmp, *itr);
-        }
-        if(!foundFather&&(tmp)->getInfo()->isDaughterOf((*itr)->getInfo()))
-        {
-            foundFather=true;
-            addLineBetween(tmp, *itr);
-        }
-        if(!foundPrev&&tmp->getInfo()->isNextOf((*itr)->getInfo()))
-        {
-            foundPrev=true;
-            addLineBetween(tmp, *itr);
-        }
-        if(!foundDaughter&&(*itr)->getInfo()->isDaughterOf(tmp->getInfo()))
-        {
-            foundDaughter=true;
-            addLineBetween(tmp, *itr);
-        }
-    }
     Node* temporaryNode=NULL;
     std::cout<<"found Next:"<<foundNext<<"has Next:"<<tmp->getInfo()->hasNext();
     if(!foundNext&&tmp->getInfo()->hasNext())
