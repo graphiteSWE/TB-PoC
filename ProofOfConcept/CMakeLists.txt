@@ -12,7 +12,6 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 ##find_package(spct REQUIRED)
 include(${spct_DIR}/SpeectConf.cmake)
 include_directories(${SPCT_INCLUDE_DIRS})
-
 ## aggiunta QT
 add_subdirectory(QT)
 include_directories(QT/header)

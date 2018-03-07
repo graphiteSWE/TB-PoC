@@ -18,12 +18,9 @@ case "$1" in
         # Get speect from Mivoq' github repository
         git clone https://github.com/mivoq/speect sources/speect
         ;;
-    "download_deps0")
+    "download_deps")
         # Get hts_engine_API-1.03 sources from sf.net
         curl -L -o downloads/hts_engine_API-1.03.tar.gz 'https://drive.google.com/uc?export=download&id=15uEApO9hcJ60MKYm9Bgb1-r3dRvX0osN' 
-        ;;
-
-    "download_deps")
         # Download voices from http://hlt.mirror.ac.za/TTS/Speect/
         # Have a look at http://speect.sourceforge.net/download.html#download
         mkdir -p downloads/voices
@@ -87,7 +84,7 @@ EOF
 	rm -fr install
 	rm -f tmp.wav*
 	;;
-    "download")
+    "downloads")
         "$0" download
         "$0" download_deps
         "$0" extract_deps
@@ -96,7 +93,10 @@ EOF
         "$0" run
         ;;
     *)
-	"$0" build_deps
+        
+        "$0" download
+        "$0" extract_deps
+	    "$0" build_deps
         "$0" build
         "$0" run
         ;;

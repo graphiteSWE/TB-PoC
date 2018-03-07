@@ -19,6 +19,7 @@ set ( SOURCES
   src/arc.cpp
   src/graphprinter.cpp
   src/speectnode.cpp
+  src/speectwrapper.cpp
 )
 set( HEADER
     header/mainwindow.h
@@ -27,6 +28,7 @@ set( HEADER
     header/graphprinter.h	
     header/arc.h
     header/speectnode.h
+    header/speectwrapper.h
 )
 set ( MOC_HEADER
    mainwindow.h
@@ -35,6 +37,8 @@ set ( MOC_HEADER
    arc.h
    graphprinter.h
    speectnode.h
+   speectwrapper.h
+
 )
 QT5_ADD_RESOURCES( RES_SOURCES ${RESOURCES} )
 QT5_WRAP_UI( UI_HEADERS ${UIS} )
