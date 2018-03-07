@@ -22,7 +22,8 @@ MainWindow::MainWindow(QWidget *parent, GraphManager &Scene, SpeectWrapper &Spee
       Speect(&Speect)
 {
     //dico alla View che disegna chi è il suo model
-    QPushButton* ButtonNode(new QPushButton("Nodino ++",mainWin));
+    QPushButton* ButtonNode(new QPushButton("Carica",mainWin));
+    sentence=new QLineEdit(parent);
     QPushButton* ButtonArc(new QPushButton("Archetti ++",mainWin));
     QPushButton* ButtonNode2(new QPushButton("Cancella bersaglio",mainWin));
 
@@ -32,10 +33,11 @@ MainWindow::MainWindow(QWidget *parent, GraphManager &Scene, SpeectWrapper &Spee
     
     //dico che il il grafo è centrato nella pagina principale e lo aggiungo al layout
     this->setCentralWidget(mainWin);
-    ButtonLayout->addWidget(ButtonArc);
-
+    ButtonLayout->addWidget(sentence);
 
     ButtonLayout->addWidget(ButtonNode);
+
+    ButtonLayout->addWidget(ButtonArc);
 
     ButtonLayout->addWidget(ButtonNode2);
     Layout->addItem(ButtonLayout);
@@ -46,7 +48,7 @@ MainWindow::MainWindow(QWidget *parent, GraphManager &Scene, SpeectWrapper &Spee
         GraphTable->setScene(&Scene);
 
 
-    connect(ButtonNode,SIGNAL(clicked(bool)),this,SLOT(newNode()));
+    connect(ButtonNode,SIGNAL(clicked(bool)),this,SLOT(newGraph()));
     connect(ButtonArc,SIGNAL(clicked(bool)),this,SLOT(newArc()));
     connect(ButtonNode2,SIGNAL(clicked(bool)),this,SLOT(removeFocused()));
     mainWin->setLayout(Layout);
@@ -64,12 +66,12 @@ MainWindow::~MainWindow()
 
 
 //dice al model di aggiugere un nodo in posizione 0 0
-void MainWindow::newNode()
+void MainWindow::newGraph()
 {
     //Model->addNodes(0,0);
     Model->clear();
     Speect->remove();
-    Speect->setText("Hi everybody.");
+    Speect->setText(sentence->text().toStdString());
     Speect->run();
     Model->printLayer(*Speect->getLayer(0),QColor(Qt::blue));
 }

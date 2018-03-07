@@ -19,13 +19,14 @@ public:
 private:
     QWidget* mainWin;
     QLineEdit* errorLog;
+    QLineEdit* sentence;
     QGraphicsItem *First;
     GraphManager *Model;
     GraphPrinter* GraphTable;
     SpeectWrapper* Speect;
    // void resizeEvent(QResizeEvent *event);
 private slots:
-    void newNode();
+    void newGraph();
     void newArc();
     void removeFocused();
     void addItem();
