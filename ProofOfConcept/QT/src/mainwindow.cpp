@@ -6,18 +6,20 @@
 #include <QLineEdit>
 #include <QVBoxLayout>
 #include <qpushbutton.h>
+#include <speectwrapper.h>
 
 //GraphManager è del model serve solo a gestire i nodi non ha resa grafica
 //GraphPrinter renderizza gli oggetti descritti nel modello
 //questa classe potrebbe avere merda che non ha senso di esistere qua
 
-MainWindow::MainWindow(QWidget *parent, GraphManager &Scene)
+MainWindow::MainWindow(QWidget *parent, GraphManager &Scene, SpeectWrapper &Speect)
     : QMainWindow(parent),
       mainWin(new QWidget()),
       errorLog(new QLineEdit(mainWin)),
       First(nullptr),
       Model(&Scene),
-      GraphTable(new GraphPrinter(mainWin))
+      GraphTable(new GraphPrinter(mainWin)),
+      Speect(&Speect)
 {
     //dico alla View che disegna chi è il suo model
     QPushButton* ButtonNode(new QPushButton("Nodino ++",mainWin));
@@ -65,8 +67,11 @@ MainWindow::~MainWindow()
 void MainWindow::newNode()
 {
     //Model->addNodes(0,0);
-
-
+    Model->clear();
+    Speect->remove();
+    Speect->setText("Hi everybody.");
+    Speect->run();
+    Model->printLayer(*Speect->getLayer(0),QColor(Qt::blue));
 }
 
 //connette l'evento del modello che segnala se un oggetto è stato messo in focus

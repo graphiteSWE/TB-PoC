@@ -181,11 +181,6 @@ void SpeectWrapper::remove()
     /*
      * quit speect
      */
-    error = speect_quit();
-    if (error != S_SUCCESS)
-    {
-        printf("Call to 'speect_quit' failed\n");
-    }
 }
 
 
@@ -227,4 +222,19 @@ SpeectWrapper::SpeectWrapper(char* text,char* utt_type,char* voicefile,char* wav
 SpeectWrapper::~SpeectWrapper()
 {
     remove();
+    QuitSpeect();
+}
+
+void SpeectWrapper::setText(std::string text)
+{
+    Configuration.text=text.c_str();
+}
+
+void SpeectWrapper::QuitSpeect()
+{
+    error = speect_quit();
+    if (error != S_SUCCESS)
+    {
+        printf("Call to 'speect_quit' failed\n");
+    }
 }

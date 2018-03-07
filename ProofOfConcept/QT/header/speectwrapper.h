@@ -3,7 +3,7 @@
 
 #include "speect.h"
 #include "speectnode.h"
-
+#include "string"
 class SpeectWrapper
 {
 public:
@@ -12,6 +12,8 @@ public:
     SpeectNode* getLayer(int i);
     SpeectWrapper(char *text, char *utt_type, char *voicefile, char *wav);
     ~SpeectWrapper();
+    void setText(std::string text);
+    void QuitSpeect();
 private:
     int init (int * argc, char ** argv,s_erc * error);
     struct Config {

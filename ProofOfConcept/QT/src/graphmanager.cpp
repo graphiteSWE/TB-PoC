@@ -10,7 +10,7 @@
 #include <QList>
 #include "iostream"
 
-GraphManager::GraphManager(const SpeectNode* first):
+GraphManager::GraphManager():
     QGraphicsScene(),
     Nodes(QVector<Node*>()),
     Arcs(QVector<Arc*>())
@@ -23,7 +23,6 @@ GraphManager::GraphManager(const SpeectNode* first):
     addLineBetween(Nodes[1],Nodes[0]);
     addLineBetween(Nodes[2],Nodes[1]);
     addLineBetween(Nodes[2],Nodes[0]);*/
-    printLayer(*first,QColor(Qt::blue));
 }
 
 GraphManager::~GraphManager()
@@ -263,4 +262,11 @@ void GraphManager::printLayer(const SpeectNode &start, const QColor &layerColor)
     while(!toBePrinted.isEmpty())
         searchRelationship(toBePrinted,layerColor);
 
+}
+
+void GraphManager::clear()
+{
+    QGraphicsScene::clear();
+    Arcs.erase(Arcs.begin(),Arcs.end());
+    Nodes.erase(Nodes.begin(),Nodes.end());
 }

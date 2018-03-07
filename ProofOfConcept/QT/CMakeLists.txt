@@ -13,7 +13,7 @@ include_directories(header)
 include_directories(src)
 set ( SOURCES
 
-  src/mainwindow.cpp
+    src/mainwindow.cpp
   src/node.cpp
   src/graphmanager.cpp
   src/arc.cpp

@@ -7,13 +7,14 @@ class GraphManager;
 class QLineEdit;
 class QGraphicsItem;
 class GraphPrinter;
+class SpeectWrapper;
 //agglomerato di roba per
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent, GraphManager &Scene);
+    MainWindow(QWidget *parent, GraphManager &Scene,SpeectWrapper& Speect);
     ~MainWindow();
 private:
     QWidget* mainWin;
@@ -21,6 +22,7 @@ private:
     QGraphicsItem *First;
     GraphManager *Model;
     GraphPrinter* GraphTable;
+    SpeectWrapper* Speect;
    // void resizeEvent(QResizeEvent *event);
 private slots:
     void newNode();

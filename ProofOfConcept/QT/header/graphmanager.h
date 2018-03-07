@@ -24,8 +24,8 @@ public:
     void updateArcsOfNode(const Node* node);
 
     void printLayer(const SpeectNode& start, const QColor& layerColor);
-
-    GraphManager(const SpeectNode* data);
+    void clear();
+    GraphManager();
     ~GraphManager();
     //raggio dei nodi non so l'unita di misura
     const static int NODES_RADIUS=25;

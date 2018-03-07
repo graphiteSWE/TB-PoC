@@ -47,18 +47,17 @@
 #include "speectnode.h"
 #include "speectwrapper.h"
 int main(int argc, char **argv) {
-        SpeectWrapper speect("Hi everybody.","text","/home/marco/Scrivania/Nuovacartella/TB-PoC/SpeectInstaller/voices/cmu_arctic_slt/voice.json","out.wav");
-        speect.run();
+        SpeectWrapper speect("Welcome to africa.","text","/home/marco/Scrivania/Nuovacartella/TB-PoC/SpeectInstaller/voices/cmu_arctic_slt/voice.json","out.wav");
 		QApplication a(argc, argv);
 		//creo un seed per il random per generare colori a caso per i nodi
 		//creo il modello del grafo
-        GraphManager Model(speect.getLayer(0));
+
+        GraphManager Model;
 		//creo la view
-        MainWindow w(0,Model);
+        MainWindow w(0,Model,speect);
 		//mostro a schermo intero
         w.showMaximized();
         a.exec();
-        speect.remove();
 
 	
 }
