@@ -8,104 +8,105 @@ void SpeectWrapper::run()
      * initialize speect
      */
     error = speect_init(NULL);
+    bool goQuit=false;
     if (error != S_SUCCESS) {
         printf("Failed to initialize Speect\n");
-        goto quit;
+        goQuit=true;
     }
     /* load audio riff plug-in, so that we can save the audio */
     riffAudio = s_pm_load_plugin("audio_riff.spi", &error);
-    if (S_CHK_ERR(&error, S_CONTERR,
+    if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
               "main",
               "Call to \"s_pm_load_plugin\" failed"))
-        goto quit;
+        goQuit=true;
 
-    if (S_CHK_ERR(&error, S_IOEOF,
+    if (!goQuit && S_CHK_ERR(&error, S_IOEOF,
               "main",
               "Call to \"s_pm_load_plugin\" failed"))
-        goto quit;
+        goQuit=true;
 
-    if (S_CHK_ERR(&error, S_ARGERROR,
+    if (!goQuit && S_CHK_ERR(&error, S_ARGERROR,
               "main",
               "Call to \"s_pm_load_plugin\" failed"))
-        goto quit;
+        goQuit=true;
 
 
 
     /* load textgrid plug-in, so that we can save the textgrid */
     textGrid = s_pm_load_plugin("utt_textgrid.spi", &error);
-    if (S_CHK_ERR(&error, S_CONTERR,
+    if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
               "main",
               "Call to \"s_pm_load_plugin\" failed"))
-        goto quit;
+        goQuit=true;
 
 
     /* load maryxml plug-in, so that we can save the maryxml */
     maryXML = s_pm_load_plugin("utt_maryxml.spi", &error);
-    if (S_CHK_ERR(&error, S_CONTERR,
+    if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
               "main",
               "Call to \"s_pm_load_plugin\" failed"))
-        goto quit;
+        goQuit=true;
 
     /* load maryxml plug-in, so that we can save the maryxml */
     HTSLabelsToXML = s_pm_load_plugin("utt_htslabelsexport.spi", &error);
-    if (S_CHK_ERR(&error, S_CONTERR,
+    if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
               "main",
               "Call to \"s_pm_load_plugin\" failed"))
-        goto quit;
+        goQuit=true;
 
     /* load voice */
     voice = s_vm_load_voice(Configuration.voicefile, &error);
-    if (S_CHK_ERR(&error, S_CONTERR,
+    if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
               "main",
               "Call to \"s_vm_load_voice\" failed"))
-        goto quit;
+        goQuit=true;
 
 
     /* synthesize utterance */
     utt = SVoiceSynthUtt(voice, Configuration.utt_type, SObjectSetString(Configuration.text, &error), &error);
-    if (S_CHK_ERR(&error, S_CONTERR,
+    if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
               "main",
               "Call to \"SVoiceSynthUtt\" failed"))
-        goto quit;
+        goQuit=true;
 
 
     isText = s_strcmp(Configuration.utt_type, "text", &error);
-    if (S_CHK_ERR(&error, S_CONTERR,
+    if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
               "main",
               "Call to \"s_strcmp\" failed"))
-        goto quit;
+        goQuit=true;
 
-    if (isText == 0) {
+    if (!goQuit && isText == 0) {
         /* get audio object */
         audio = SUtteranceGetFeature(utt, "audio", &error);
         if (S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"SUtteranceGetFeature\" failed"))
-            goto quit;
+            goQuit=true;
 
 
         /* save audio */
         SObjectSave(audio, Configuration.wavfile, "riff", &error);
-        if (S_CHK_ERR(&error, S_CONTERR,
+        if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"SObjectSave\" failed"))
-            goto quit;
+            goQuit=true;
 
 
         /* save textgrid */
         s_asprintf(&textgrid_file, &error, "%s%s", Configuration.wavfile, ".TextGrid");
-        if (S_CHK_ERR(&error, S_CONTERR,
+        if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"s_asprinf\" failed"))
-            goto quit;
+            goQuit=true;
 
         SObjectSave(S_OBJECT(utt), textgrid_file, "spct_utt_textgrid", &error);
-        if (S_CHK_ERR(&error, S_CONTERR,
+        if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"SObjectSave\" failed"))
         {
             S_FREE(textgrid_file);
-            goto quit;
+            goQuit=true;
         }
 
         S_FREE(textgrid_file);
@@ -113,36 +114,36 @@ void SpeectWrapper::run()
 
         /* save maryxml */
         s_asprintf(&maryxml_file, &error, "%s%s", Configuration.wavfile, ".MaryXML");
-        if (S_CHK_ERR(&error, S_CONTERR,
+        if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"s_asprinf\" failed"))
-            goto quit;
+            goQuit=true;
 
         SObjectSave(S_OBJECT(utt), maryxml_file, "spct_utt_maryxml", &error);
-        if (S_CHK_ERR(&error, S_CONTERR,
+        if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"SObjectSave\" failed"))
         {
             S_FREE(maryxml_file);
-            goto quit;
+            goQuit=true;
         }
 
         S_FREE(maryxml_file);
 
         /* save htslabels */
         s_asprintf(&htslabels_file, &error, "%s%s", Configuration.wavfile, ".htslabels.XML");
-        if (S_CHK_ERR(&error, S_CONTERR,
+        if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"s_asprinf\" failed"))
-            goto quit;
+            goQuit=true;
 
         SObjectSave(S_OBJECT(utt), htslabels_file, "spct_utt_htslabelsXML", &error);
-        if (S_CHK_ERR(&error, S_CONTERR,
+        if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"SObjectSave\" failed"))
         {
             S_FREE(htslabels_file);
-            goto quit;
+            goQuit=true;
         }
 
         S_FREE(htslabels_file);
