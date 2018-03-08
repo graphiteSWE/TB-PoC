@@ -10,7 +10,7 @@ public:
     void run();
     void remove();
     SpeectNode* getLayer(int i);
-    SpeectWrapper(std::string text, char *utt_type, char *voicefile, char *wav);
+    SpeectWrapper(const std::string& text,const char *utt_type,const char *voicefile,const char *wav);
     ~SpeectWrapper();
     void setText(std::string text);
     void QuitSpeect();

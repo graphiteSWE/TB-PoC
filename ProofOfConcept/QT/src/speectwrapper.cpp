@@ -213,7 +213,7 @@ SpeectNode *SpeectWrapper::getLayer(int i)
 }
 
 #include <iostream>
-SpeectWrapper::SpeectWrapper(std::string text,char* utt_type,char* voicefile,char* wav)
+SpeectWrapper::SpeectWrapper(const std::string& text,const char* utt_type,const char* voicefile,const char* wav)
 {
     Configuration.text=text;
     Configuration.utt_type=utt_type;

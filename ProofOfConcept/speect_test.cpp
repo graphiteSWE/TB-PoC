@@ -46,8 +46,23 @@
 #include <iostream>
 #include "speectnode.h"
 #include "speectwrapper.h"
+/* defines FILENAME_MAX */
+// #define WINDOWS  /* uncomment this line to use it for windows.*/ 
+#ifdef WINDOWS
+#include <direct.h>
+#define GetCurrentDir _getcwd
+#else
+#include <unistd.h>
+#define GetCurrentDir getcwd
+#endif
+#include<iostream>
 int main(int argc, char **argv) {
-        SpeectWrapper speect("Welcome to africa.","text","/home/marco/Scrivania/Nuovacartella/TB-PoC/SpeectInstaller/voices/cmu_arctic_slt/voice.json","out.wav");
+        char buff[FILENAME_MAX];
+        GetCurrentDir( buff, FILENAME_MAX );
+        std::string current_working_dir(buff);
+        current_working_dir=current_working_dir+"/../../SpeectInstaller/voices/cmu_arctic_slt/voice.json";
+        std::cout<<current_working_dir;
+        SpeectWrapper speect("","text",current_working_dir.c_str(),"out.wav");
 		QApplication a(argc, argv);
 		//creo un seed per il random per generare colori a caso per i nodi
 		//creo il modello del grafo
