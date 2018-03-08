@@ -22,14 +22,14 @@ Proof of Concept (PoC) relativo alla Technology Baseline (TB) del gruppo Graphit
 
 Per installare ed eseguire il PoC, attenersi alla seguente procedura:
 
-1. Clonare o scaricare la repository sulla propria macchina.
-2. Entrare nella cartella `SpeectInstaller`.
-3. Eseguire il file bash `install.sh`.
-4. Tornare alla directory principale.
-5. Entrare nella cartella `ProofOfConcept/test` ed eseguire i seguenti comandi da terminale:
-⋅⋅1. `cmake ..`
-⋅⋅2 `make`
-6. Avviare l'eseguibile con il comando `./speect_test`.
+1. Clonare o scaricare la repository sulla propria macchina
+2. Entrare nella cartella `SpeectInstaller`
+3. Eseguire il file bash `install.sh`
+4. Tornare alla directory principale
+5. Entrare nella cartella `ProofOfConcept/test`
+6. Da terminale, eseguire: `cmake ..`
+7. Da terminale, eseguire: `make`
+8. Avviare l'eseguibile con il comando `./speect_test`
 
 ### Note aggiuntive
 
