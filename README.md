@@ -41,11 +41,19 @@ Per installare ed eseguire il PoC, attenersi alla seguente procedura:
 
 Il PoC introduce le tecnologie, i framework e le librerie selezionate per lo sviluppo del prodotto e ne dimostra adeguatezza e grado di integrazione in relazione agli obiettivi di progetto.
 
-## Funzionalità sviluppate
+### Problemi risolti e funzionalità sviluppate
 
 * Compilazione e configurazione di Speect tramite CMAKE
 * Interfaccia grafica realizzata con Qt
-* Stampa del grafo relativo ad una _relation_ dell'_utterance_ di Speect 
+* Stampa del grafo (parzialmente manipolabile) relativo ad una _relation_ dell'_utterance_ di Speect 
+* Incapsulamento di Speect tramite oggetti
+
+### Problemi irrisolti
+
+* Importazione e esportazione del grafo
+* Completa manipolazione del grafo
+* Completa configurazione del software per il testing automatico
+
 
 ## Tecnologie impiegate
 
