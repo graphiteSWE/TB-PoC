@@ -10,14 +10,14 @@ public:
     void run();
     void remove();
     SpeectNode* getLayer(int i);
-    SpeectWrapper(char *text, char *utt_type, char *voicefile, char *wav);
+    SpeectWrapper(std::string text, char *utt_type, char *voicefile, char *wav);
     ~SpeectWrapper();
     void setText(std::string text);
     void QuitSpeect();
 private:
     int init (int * argc, char ** argv,s_erc * error);
     struct Config {
-        const char * text;
+        std::string text;
         const char * wavfile;
         const char * voicefile;
         const char * utt_type;

@@ -1,12 +1,13 @@
 #include "speectwrapper.h"
 
-
+#include "iostream"
 void SpeectWrapper::run()
 {
 
     /*
      * initialize speect
      */
+    std::cout<<std::endl<<"Testo:"<<Configuration.text;
     error = speect_init(NULL);
     bool goQuit=false;
     if (error != S_SUCCESS) {
@@ -14,7 +15,7 @@ void SpeectWrapper::run()
         goQuit=true;
     }
     /* load audio riff plug-in, so that we can save the audio */
-    riffAudio = s_pm_load_plugin("audio_riff.spi", &error);
+  /*  riffAudio = s_pm_load_plugin("audio_riff.spi", &error);
     if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
               "main",
               "Call to \"s_pm_load_plugin\" failed"))
@@ -33,7 +34,7 @@ void SpeectWrapper::run()
 
 
     /* load textgrid plug-in, so that we can save the textgrid */
-    textGrid = s_pm_load_plugin("utt_textgrid.spi", &error);
+/*    textGrid = s_pm_load_plugin("utt_textgrid.spi", &error);
     if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
               "main",
               "Call to \"s_pm_load_plugin\" failed"))
@@ -41,14 +42,14 @@ void SpeectWrapper::run()
 
 
     /* load maryxml plug-in, so that we can save the maryxml */
-    maryXML = s_pm_load_plugin("utt_maryxml.spi", &error);
+ /*   maryXML = s_pm_load_plugin("utt_maryxml.spi", &error);
     if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
               "main",
               "Call to \"s_pm_load_plugin\" failed"))
         goQuit=true;
 
     /* load maryxml plug-in, so that we can save the maryxml */
-    HTSLabelsToXML = s_pm_load_plugin("utt_htslabelsexport.spi", &error);
+ /*   HTSLabelsToXML = s_pm_load_plugin("utt_htslabelsexport.spi", &error);
     if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
               "main",
               "Call to \"s_pm_load_plugin\" failed"))
@@ -63,7 +64,7 @@ void SpeectWrapper::run()
 
 
     /* synthesize utterance */
-    utt = SVoiceSynthUtt(voice, Configuration.utt_type, SObjectSetString(Configuration.text, &error), &error);
+    utt = SVoiceSynthUtt(voice, Configuration.utt_type, SObjectSetString(Configuration.text.c_str(), &error), &error);
     if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
               "main",
               "Call to \"SVoiceSynthUtt\" failed"))
@@ -75,10 +76,10 @@ void SpeectWrapper::run()
               "main",
               "Call to \"s_strcmp\" failed"))
         goQuit=true;
-
+/*
     if (!goQuit && isText == 0) {
         /* get audio object */
-        audio = SUtteranceGetFeature(utt, "audio", &error);
+ /*       audio = SUtteranceGetFeature(utt, "audio", &error);
         if (S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"SUtteranceGetFeature\" failed"))
@@ -86,7 +87,7 @@ void SpeectWrapper::run()
 
 
         /* save audio */
-        SObjectSave(audio, Configuration.wavfile, "riff", &error);
+ /*       SObjectSave(audio, Configuration.wavfile, "riff", &error);
         if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"SObjectSave\" failed"))
@@ -94,7 +95,7 @@ void SpeectWrapper::run()
 
 
         /* save textgrid */
-        s_asprintf(&textgrid_file, &error, "%s%s", Configuration.wavfile, ".TextGrid");
+ /*       s_asprintf(&textgrid_file, &error, "%s%s", Configuration.wavfile, ".TextGrid");
         if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"s_asprinf\" failed"))
@@ -113,7 +114,7 @@ void SpeectWrapper::run()
 
 
         /* save maryxml */
-        s_asprintf(&maryxml_file, &error, "%s%s", Configuration.wavfile, ".MaryXML");
+/*        s_asprintf(&maryxml_file, &error, "%s%s", Configuration.wavfile, ".MaryXML");
         if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"s_asprinf\" failed"))
@@ -131,7 +132,7 @@ void SpeectWrapper::run()
         S_FREE(maryxml_file);
 
         /* save htslabels */
-        s_asprintf(&htslabels_file, &error, "%s%s", Configuration.wavfile, ".htslabels.XML");
+ /*       s_asprintf(&htslabels_file, &error, "%s%s", Configuration.wavfile, ".htslabels.XML");
         if (!goQuit && S_CHK_ERR(&error, S_CONTERR,
                   "main",
                   "Call to \"s_asprinf\" failed"))
@@ -147,7 +148,7 @@ void SpeectWrapper::run()
         }
 
         S_FREE(htslabels_file);
-    }
+    }*/
     quit:
     ;
 }
@@ -212,7 +213,7 @@ SpeectNode *SpeectWrapper::getLayer(int i)
 }
 
 #include <iostream>
-SpeectWrapper::SpeectWrapper(char* text,char* utt_type,char* voicefile,char* wav)
+SpeectWrapper::SpeectWrapper(std::string text,char* utt_type,char* voicefile,char* wav)
 {
     Configuration.text=text;
     Configuration.utt_type=utt_type;
@@ -228,7 +229,7 @@ SpeectWrapper::~SpeectWrapper()
 
 void SpeectWrapper::setText(std::string text)
 {
-    Configuration.text=text.c_str();
+    Configuration.text=text;
 }
 
 void SpeectWrapper::QuitSpeect()
