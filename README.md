@@ -27,8 +27,8 @@ Per installare ed eseguire il PoC, attenersi alla seguente procedura:
 3. Eseguire il file bash `install.sh`.
 4. Tornare alla directory principale.
 5. Entrare nella cartella `ProofOfConcept/test` ed eseguire i seguenti comandi da terminale:
-..* `cmake ..`
-..* `make`
+⋅⋅* `cmake ..`
+⋅⋅* `make`
 6. Avviare l'eseguibile con il comando `./speect_test`.
 
 ### Note aggiuntive
