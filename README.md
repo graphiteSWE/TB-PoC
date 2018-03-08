@@ -8,8 +8,8 @@ Proof of Concept (PoC) relativo alla Technology Baseline (TB) del gruppo Graphit
 
 * [Documentazione Speect](http://speect.sourceforge.net/ "Documentazione Speect")
 * [Documentazione Qt](http://doc.qt.io/ "Documentazione Qt")
-* [Tutorial su CMAKE fornito dalla Proponente] (https://github.com/giuliopaci/cmake-tutorial "Tutorial CMAKE")
-* [Speect di Mivoq s.r.l.] (https://github.com/mivoq/speect "Mivoq Speect) 
+* [Tutorial su CMAKE fornito dalla Proponente](https://github.com/giuliopaci/cmake-tutorial "Tutorial CMAKE")
+* [Speect di Mivoq s.r.l.](https://github.com/mivoq/speect "Mivoq Speect) 
 
 ## Prerequisiti
 
