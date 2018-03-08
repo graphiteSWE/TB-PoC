@@ -73,10 +73,14 @@ case "$1" in
         cd "$BASEDIR"
         ;;
     "run")
-        # Run an example
-        #./builds/"$PLATFORM"/DeSpeect/speect_test -m text -t "I love Cute" -v "`pwd`"/voices/cmu_arctic_slt/voice.json -o tmp.wav
+        cd "$BASEDIR"
+        if [ -z "$(ls -A ./install)" ]; then
+            echo "Speect non compilato"
+        else
+            echo "Speect ha una buona chance di essere compilato"
+        fi
         cat <<EOF
-        Hai compilato correttamente Speect
+        End
 EOF
         ;;
     "clean")
