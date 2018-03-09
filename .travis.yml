@@ -1,0 +1,52 @@
+language: cpp
+
+sudo: required
+
+compiler:
+    - gcc
+
+os:
+    - linux
+
+#Install apt addons
+
+#Install cache components
+
+#before_install
+before_install:
+ - sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
+ - sudo apt-get update -qq
+ - sudo apt-get install qtbase5-dev qtdeclarative5-dev libqt5webkit5-dev libsqlite3-dev
+ - sudo apt-get install qt5-default qttools5-dev-tools
+
+#install
+install:
+    - sudo apt-get update
+    - sudo apt-get install libcppunit-dev
+    - ./build.sh
+
+#before_script
+
+#script
+script:
+    - 
+    
+#before_cache (for cleaning up cache)
+
+#after_success or after_failure
+
+#before_deploy
+
+#deploy
+
+#after_deploy
+
+#after_script
+
+notifications:
+    - email: false #niente notifiche per email
+    - slack:
+#        - rooms:
+#            - <account>:<token>#travis-ci  #link al canale slack
+        - on_success: change
+        - on_failure: always
