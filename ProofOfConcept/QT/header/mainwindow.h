@@ -18,7 +18,6 @@ public:
     ~MainWindow();
 private:
     QWidget* mainWin;
-    QLineEdit* errorLog;
     QLineEdit* sentence;
     QGraphicsItem *First;
     GraphManager *Model;
@@ -27,9 +26,6 @@ private:
    // void resizeEvent(QResizeEvent *event);
 private slots:
     void newGraph();
-    void newArc();
-    void removeFocused();
-    void addItem();
 };
 
 #endif // MAINWINDOW_H

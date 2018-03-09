@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 #include <qpushbutton.h>
 #include <speectwrapper.h>
+#include <QLabel>
 
 //GraphManager è del model serve solo a gestire i nodi non ha resa grafica
 //GraphPrinter renderizza gli oggetti descritti nel modello
@@ -15,21 +16,22 @@
 MainWindow::MainWindow(QWidget *parent, GraphManager &Scene, SpeectWrapper &Speect)
     : QMainWindow(parent),
       mainWin(new QWidget()),
-      errorLog(new QLineEdit(mainWin)),
       First(nullptr),
       Model(&Scene),
       GraphTable(new GraphPrinter(mainWin)),
       Speect(&Speect)
 {
     //dico alla View che disegna chi è il suo model
-    QPushButton* ButtonNode(new QPushButton("Carica",mainWin));
+    QPushButton* ButtonNode(new QPushButton("Genera grafo dei token",mainWin));
     sentence=new QLineEdit(parent);
-    QPushButton* ButtonArc(new QPushButton("Archetti ++",mainWin));
-    QPushButton* ButtonNode2(new QPushButton("Cancella bersaglio",mainWin));
-
+    QLabel* explaination=new QLabel("Grafo delle relation ottenute:", mainWin);
+    QFont font = explaination->font();
+    font.setPointSize(20);
+    explaination->setFont(font);
 
     QVBoxLayout* Layout(new QVBoxLayout());
     QHBoxLayout* ButtonLayout(new QHBoxLayout());
+    QHBoxLayout* LabelLayout(new QHBoxLayout());
     
     //dico che il il grafo è centrato nella pagina principale e lo aggiungo al layout
     this->setCentralWidget(mainWin);
@@ -37,20 +39,16 @@ MainWindow::MainWindow(QWidget *parent, GraphManager &Scene, SpeectWrapper &Spee
 
     ButtonLayout->addWidget(ButtonNode);
 
-    ButtonLayout->addWidget(ButtonArc);
+    LabelLayout->addWidget(explaination);
 
-    ButtonLayout->addWidget(ButtonNode2);
     Layout->addItem(ButtonLayout);
-    Layout->addWidget(errorLog);
-    errorLog->setMaximumHeight(30);
-    Layout->addSpacing(100);
+    Layout->addSpacing(20);
+    Layout->addItem(LabelLayout);
     Layout->addWidget(GraphTable);
         GraphTable->setScene(&Scene);
 
 
     connect(ButtonNode,SIGNAL(clicked(bool)),this,SLOT(newGraph()));
-    connect(ButtonArc,SIGNAL(clicked(bool)),this,SLOT(newArc()));
-    connect(ButtonNode2,SIGNAL(clicked(bool)),this,SLOT(removeFocused()));
     mainWin->setLayout(Layout);
 
 }
@@ -73,74 +71,5 @@ void MainWindow::newGraph()
     Speect->remove();
     Speect->setText(sentence->text().toStdString());
     Speect->run();
-    Model->printLayer(*Speect->getLayer(0),QColor(Qt::blue));
-}
-
-//connette l'evento del modello che segnala se un oggetto è stato messo in focus
-//a uno slot successivamente definito
-//così asincronamente attende che 2 oggetti vengano focussati
-void MainWindow::newArc()
-{
-
-    errorLog->setText("Seleziona due Nodi");
-
-    Model->clearSelection();
-    First=0;
-    connect(Model,SIGNAL(selectionChanged()),this,SLOT(addItem()),Qt::UniqueConnection);
-}
-
-//dice al model di elimare l'oggetto in focus
-void MainWindow::removeFocused()
-{
-    //dato che potrebbe essere chiamato senza oggetti in focus non chiedo nemmeno al model l'operazione idem piu avanti
-    //se passasse potrebbe generare index out of bound
-
-    if(Model->selectedItems().size()>0)
-    {
-        First=0;
-        Model->removeFocusItem();
-    }
-}
-
-
-//slot per ottenere i due oggetti
-//ogni volta il model segnala che è cambiato il focus
-//controllo se c'e un oggetto in focus
-void MainWindow::addItem()
-{
-    //se devo ancora avere un oggetto
-    if(!First)
-    {
-        //se c'e un oggetto in focus
-        if(Model->selectedItems().size()>0){
-             errorLog->setText("Primo oggetto Selezionato");
-            First=Model->selectedItems()[0];//lo prendo
-        }
-    }
-    else
-    {
-    //se ho gia selezionato un oggetto
-        if(Model->selectedItems().size()>0)
-        {
-            //se ho un altro oggetto in focus provo a creare la linea
-            //il modello controlla che gli oggetti siano nodi etc
-
-            GraphTable->setUpdatesEnabled(false);
-            if(Model->addLineBetween(First,Model->selectedItems()[0]))
-            {
-                //se ha successo disconnetto il segnale di questo evento
-                disconnect(Model,SIGNAL(selectionChanged()),this,SLOT(addItem()));
-
-                errorLog->setText("");
-            }
-            else
-            {
-                //Altrimenti lancio un errore
-                errorLog->setText("Hai selezionato qualcosa di sbagliato riprova a selezionare gli oggetti");
-            }
-            //in ogni caso se ho successo o fallisco per dichiaro di non avere alcun oggetto in coda per essere il primo punto
-            //di un arco
-            First=NULL;
-        }
-    }
+    Model->printLayer(*Speect->getLayer(0),QColor(Qt::green));
 }
