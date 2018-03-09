@@ -47,6 +47,7 @@ Il PoC introduce le tecnologie, i framework e le librerie selezionate per lo svi
 * Interfaccia grafica realizzata con Qt
 * Stampa del grafo (parzialmente manipolabile) relativo ad una _relation_ dell'_utterance_ di Speect 
 * Incapsulamento di Speect tramite oggetti
+* Parziale implementazione del software per il testing automatico
 
 ### Problemi irrisolti
 
