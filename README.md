@@ -62,3 +62,4 @@ Il PoC introduce le tecnologie, i framework e le librerie selezionate per lo svi
 * CMAKE 2.8
 * Speect 1.1.0-69-g65f4
 * Ubuntu 16.04 LTS
+* Travis CI
