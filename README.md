@@ -1,4 +1,4 @@
-# Technology Baseline - Proof of Concept per il progetto DeSpeect
+# Proof of Concept per il progetto DeSpeect
 
 ## Introduzione
 
@@ -39,7 +39,7 @@ Per installare ed eseguire il PoC, attenersi alla seguente procedura:
 
 ## Scopo del PoC
 
-Il PoC introduce le tecnologie, i framework e le librerie selezionate per lo sviluppo del prodotto e ne dimostra adeguatezza e grado di integrazione in relazione agli obiettivi di progetto.
+Il PoC introduce le tecnologie, i framework e le librerie selezionate per lo sviluppo del prodotto e ne dimostra adeguatezza e grado di integrazione in relazione agli obiettivi di progetto. Il PoC consiste di un'interfaccia grafica realizzata tramite librerie Qt che, ricevuta una stringa in input, invoca un metodo della libreria Speect per estarre la _relation token_ e la stampa sotto forma di grafo insieme all'input normalizzato in lettere minuscole. La build del PoC sfrutta la tecnologia CMAKE per la corretta compilazione di Speect. 
 
 ### Problemi risolti e funzionalità sviluppate
 
@@ -63,3 +63,8 @@ Il PoC introduce le tecnologie, i framework e le librerie selezionate per lo svi
 * Speect 1.1.0-69-g65f4
 * Ubuntu 16.04 LTS
 * Travis CI
+
+## Video dimostrazione
+
+Al seguente link YouTube è disponibile un video che dimostra installazione ed esecuzione del PoC:
+[Link alla dimostrazione video](https://www.youtube.com/watch?v=lyFgTZ1_zsY&feature=youtu.be "video dimostrativo del PoC")
