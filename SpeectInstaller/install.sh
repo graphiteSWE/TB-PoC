@@ -77,7 +77,7 @@ case "$1" in
         if [ -z "$(ls -A ./install)" ]; then
             echo "Speect non compilato"
         else
-            echo "Speect ha una buona chance di essere compilato"
+            echo "Speect compilato"
         fi
         cat <<EOF
         End
