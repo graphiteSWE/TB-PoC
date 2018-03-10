@@ -33,9 +33,10 @@ Per installare ed eseguire il PoC, attenersi alla seguente procedura:
 
 ### Note aggiuntive
 
-* L'eseguibile prodotto è speect_test e non richiede parametri da shell.
+* L'eseguibile prodotto è speect_test e non richiede parametri da shell
 * Si garantisce l'esecuzione dello stesso solo se esso è all'interno di una cartella in `ProofOfConcept` (Speect necessita di un path assoluto, quindi è stato usato un path relativo all'eseguibile che conduce all'header di Speect)
 * Per eseguire da un altra cartella, è necessario modificare il main (`speect_test.cpp`)
+* Il file `build.sh` sostituisce i punti 2 e 3 del precedente elenco, ma è all'oggi utilizzato per test sulla corretta integrazione di Travis CI
 
 ### Video dimostrazione
 
