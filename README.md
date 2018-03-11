@@ -47,7 +47,7 @@ Al seguente link YouTube è disponibile un video che dimostra installazione ed e
 
 ## Scopo del PoC
 
-Il PoC introduce le tecnologie, i framework e le librerie selezionate per lo sviluppo del prodotto e ne dimostra adeguatezza e grado di integrazione in relazione agli obiettivi di progetto. Il PoC consiste di un'interfaccia grafica realizzata tramite librerie Qt che, ricevuta una stringa in input, invoca un metodo della libreria Speect per estarre la _relation token_ e la stampa sotto forma di grafo insieme all'input normalizzato in lettere minuscole. La build del PoC sfrutta la tecnologia CMAKE per la corretta compilazione di Speect. 
+Il PoC introduce le tecnologie, i framework e le librerie selezionate per lo sviluppo del prodotto e ne dimostra adeguatezza e grado di integrazione in relazione agli obiettivi di progetto. Il PoC consiste di un'interfaccia grafica realizzata tramite librerie Qt che, ricevuta una stringa in input, invoca un metodo della libreria Speect per estarre la _relation token_ e la stampa sotto forma di grafo insieme all'input normalizzato in lettere minuscole. La build del PoC sfrutta la tecnologia CMAKE per la corretta compilazione di Speect ed è testata via Travis CI. 
 
 ### Problemi risolti e funzionalità sviluppate
 
