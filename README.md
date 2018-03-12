@@ -19,6 +19,7 @@ Proof of Concept (PoC) relativo alla Technology Baseline (TB) del gruppo Graphit
 * CMAKE (versione minima 2.8)
 * Compilatore ANSI C/ISO C90
 * GCC
+* Qt 5.9.0
 
 ## Installazione ed esecuzione
 
