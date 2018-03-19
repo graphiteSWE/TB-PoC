@@ -17,7 +17,7 @@ public:
     //allarga la draw box della freccia
     QRectF boundingRect() const;
 
-    Arc(int startNode, int endNode, QGraphicsItem* parent=0);
+    Arc(int startNode, int endNode,QColor color=Qt::black,bool directional=1 ,QGraphicsItem* parent=0);
 
     //metodo che definisce la forma della freccia la punta bisogna definirla a mano
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *,QWidget *);
@@ -31,6 +31,7 @@ public:
     //ridefinisce la hitbox della freccia;
     QPainterPath shape() const;
 private:
+bool Directional;
     //altezza della freccia
     const static int ARROW_HEIGHT=8;
     //colore della freccia, da chi parte e dove arriva se se il nodo di partenza e quello di arrivo collidono

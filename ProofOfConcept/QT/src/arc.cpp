@@ -5,15 +5,16 @@
 #include <QPainter>
 
 //costruisce un arco dato l'id del inizio e della fine
-Arc::Arc(int start,int end, QGraphicsItem *parent):
+Arc::Arc(int start,int end,QColor color,bool isDirectional,QGraphicsItem *parent):
     QGraphicsLineItem(parent),
-    myColor(Qt::black),
+    myColor(color),
     starting(start),
     ending(end)
 {
     setLine(0,0,0,0);
     setFlag(QGraphicsItem::ItemIsSelectable);
     setPen(QPen(myColor));
+    Directional=isDirectional;  
     //priorita' piu alta cosi viene mostrato sopra di tutto
     this->setZValue(10);
 }
@@ -90,7 +91,6 @@ QPainterPath Arc::shape() const
     //aggiungo la hitbox
     p.addPolygon(head);
     return p;
-
 }
 
 
@@ -112,28 +112,33 @@ void Arc::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
     }
     else//altrimenti è nero
     {
-        myPen.setColor(myColor);
+        myPen.setColor(Qt::black);
         painter->setPen(myPen);
         painter->setBrush(myColor);
     }
 
-    //Pura Matematica per calcolare i 3 punti della freccia have fun
-    //stessa roba di sopra circa
-    QPointF point=line().p1()-line().p2();
+        QPointF point=line().p1()-line().p2();
     point=(point/qSqrt(point.x()*point.x()+point.y()*point.y()));
-    QPointF orthogonal(-point.y(),point.x());
     QPointF arrowPoint=line().p2()+point*GraphManager::NODES_RADIUS;
     QPointF arrowTail=line().p1()-point*GraphManager::NODES_RADIUS;
+
+    //Pura Matematica per calcolare i 3 punti della freccia have fun
+    //stessa roba di sopra circa
+    if(Directional){
+
+    QPointF orthogonal(-point.y(),point.x());
     QPointF arrowP1 = line().p2()+point*(GraphManager::NODES_RADIUS+ARROW_HEIGHT) - orthogonal*ARROW_HEIGHT;
     QPointF arrowP2 = line().p2()+point*(GraphManager::NODES_RADIUS+ARROW_HEIGHT) + orthogonal*ARROW_HEIGHT;
     //crea la punta
     QPolygonF arrowHead;
     arrowHead.clear();
     arrowHead << arrowPoint << arrowP1 << arrowP2;
+        //disegna la freccia
+    painter->drawPolygon(arrowHead);
+    }
     //disegna la linea dalle due circonferenze non dai centri
     painter->drawLine(arrowTail,arrowPoint);
-    //disegna la freccia
-    painter->drawPolygon(arrowHead);
+
 }
 
 //ridefinisce l'area di disegno della freccia(la allarga di un po cosi non sborda la punta della freccia)

@@ -46,7 +46,11 @@ const SpeectNode* SpeectNode::getDaughter() const {
 	s_erc error;
 	return new SpeectNode(SItemDaughter(data, &error));
 }
- 
+const bool SpeectNode::Equals(const SpeectNode& item)const
+{
+	s_erc error=S_SUCCESS;
+	return SItemEqual(data,item.data,&error);
+} 
 const bool SpeectNode::operator ==(const SpeectNode& item) const {
 	return data == item.data;
 }

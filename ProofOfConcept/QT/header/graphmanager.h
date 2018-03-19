@@ -17,7 +17,9 @@ public:
     //aggiunge un nodo alla lista
     void addNodes(Node *item);
     //aggiunge un arco al grafo se un arco di quel tipo non esiste già e se i nodi dati sono corretti
-    bool addLineBetween(QGraphicsItem* Node1,QGraphicsItem* Node2);
+    bool addLineBetween(QGraphicsItem* Node1,QGraphicsItem* Node2);    
+    
+	bool Link(QGraphicsItem* Node1,QGraphicsItem* Node2);
     //rimuove il nodo dalla lista
     void removeFocusItem();
     //controlla tutti gli archi e aggiorna tutti quelli che puntano o iniziano da quel nodo
@@ -28,11 +30,11 @@ public:
     GraphManager();
     ~GraphManager();
     //raggio dei nodi non so l'unita di misura
-    const static int NODES_RADIUS=25;
+    const static int NODES_RADIUS=20;
 private:
     QVector<Node*> Nodes;
     QVector<Arc*> Arcs;
-
+    int level;
     void searchRelationship(QList<Node*>& toBePrinted,const QColor& color);
 
     void setEnableUpdateViews(bool b);

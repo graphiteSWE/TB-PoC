@@ -46,6 +46,7 @@ MainWindow::MainWindow(QWidget *parent, GraphManager &Scene, SpeectWrapper &Spee
     Layout->addItem(LabelLayout);
     Layout->addWidget(GraphTable);
         GraphTable->setScene(&Scene);
+        
 
 
     connect(ButtonNode,SIGNAL(clicked(bool)),this,SLOT(newGraph()));
@@ -72,4 +73,9 @@ void MainWindow::newGraph()
     Speect->setText(sentence->text().toStdString());
     Speect->run();
     Model->printLayer(*Speect->getLayer(0),QColor(Qt::green));
+    Model->printLayer(*Speect->getLayer(1),QColor(Qt::red));
+    Model->printLayer(*Speect->getLayer(2),QColor(Qt::blue));
+    Model->printLayer(*Speect->getLayer(3),QColor(Qt::yellow));
+    Model->printLayer(*Speect->getLayer(4),QColor(Qt::gray));
+    Model->printLayer(*Speect->getLayer(5),QColor(Qt::white));
 }

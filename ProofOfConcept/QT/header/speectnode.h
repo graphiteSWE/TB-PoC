@@ -16,6 +16,7 @@ public:
 	const SpeectNode* getNext() const;
 	const SpeectNode* getDaughter() const; 
 	const char* getString() const;
+	const bool Equals(const SpeectNode& item)const;
     const bool operator == (const SpeectNode& item) const;
 
 

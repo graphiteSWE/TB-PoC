@@ -23,7 +23,10 @@ Node::Node(const SpeectNode* info, const qreal &x, const qreal &y, const qreal &
     setY(y);
     setZValue(importance);
 }
-
+QColor Node::getColor()const
+{
+    return myColor;
+}
 const SpeectNode *Node::getInfo()
 {
     return info;
