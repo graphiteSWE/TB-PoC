@@ -13,8 +13,10 @@
 GraphManager::GraphManager():
     QGraphicsScene(),
     Nodes(QVector<Node*>()),
-    Arcs(QVector<Arc*>())
-{   /*
+    Arcs(QVector<Arc*>()),
+    level(0)
+{
+    /*
     //Per mostrare 3 nodi all inizio
     addNodes(200,200);
     addNodes(50,50);
@@ -70,6 +72,8 @@ void GraphManager::searchRelationship(QList<Node *>& toBePrinted,const QColor& c
     //scorro il vettore printed e cerco se sono già stati stampati padre/figlio/precedente/successivo
       QVector<Node*>::iterator it=Nodes.begin();
     for(it;it!=Nodes.end(); it++){
+        if((*it)->getInfo()->Equals(*tmp->getInfo()))
+            {Link(tmp,*it);}
         if(!foundNext&&(*it)->getInfo()->isNextOf(tmp->getInfo()))
         {
 
@@ -98,17 +102,17 @@ void GraphManager::searchRelationship(QList<Node *>& toBePrinted,const QColor& c
     std::cout<<"found Next:"<<foundNext<<"has Next:"<<tmp->getInfo()->hasNext();
     if(!foundNext&&tmp->getInfo()->hasNext())
     {
-        temporaryNode= new Node(tmp->getInfo()->getNext(),tmp->pos().x()+4*NODES_RADIUS,tmp->pos().y(),NODES_RADIUS,color,1);
+        temporaryNode= new Node(tmp->getInfo()->getNext(),tmp->pos().x()+3*NODES_RADIUS,tmp->pos().y(),NODES_RADIUS,color,1);
         addNodes(temporaryNode);
         addLineBetween(tmp,temporaryNode);
            toBePrinted.push_front(temporaryNode);
     }
     if(!foundDaughter&&tmp->getInfo()->hasDaughter())
     {
-        temporaryNode= new Node(tmp->getInfo()->getDaughter(),tmp->pos().x(),tmp->pos().y()+4*NODES_RADIUS,NODES_RADIUS,color,1);
+        temporaryNode= new Node(tmp->getInfo()->getDaughter(),tmp->pos().x(),tmp->pos().y()+3*NODES_RADIUS,NODES_RADIUS,color,1);
         addNodes(temporaryNode);
         addLineBetween(tmp,temporaryNode);
-        toBePrinted.push_back(temporaryNode);
+        toBePrinted.push_front(temporaryNode);
 
     }
 
@@ -138,6 +142,13 @@ void GraphManager::addNodes(Node *item)
     connect(item,SIGNAL(notifyPositionChange(const Node*)),this,SLOT(nodeMoved(const Node*)));
     //aggiungo l'oggetto al modello in modo tale che sia renderizzato dalla vista
     addItem(item);
+    while(item->collidingItems().size()>1)
+    {
+        item->setX(item->x()+3*NODES_RADIUS);
+
+    }
+    nodeMoved(item);
+        
     setEnableUpdateViews(true);
 }
 
@@ -163,7 +174,7 @@ bool GraphManager::addLineBetween(QGraphicsItem *Node1, QGraphicsItem *Node2)
         //se non la trovo lo creo e lo aggiungo
         if(!found)
         {
-            Arc* temp=new Arc((*item1)->getId(),(*item2)->getId());
+            Arc* temp=new Arc((*item1)->getId(),(*item2)->getId(),(*item1)->getColor());
             temp->updatePosition(Arc::start,(*item1)->pos());
             temp->updatePosition(Arc::end,(*item2)->pos());
             Arcs.push_back(temp);
@@ -177,6 +188,27 @@ bool GraphManager::addLineBetween(QGraphicsItem *Node1, QGraphicsItem *Node2)
     setEnableUpdateViews(true);
     //true sse è stato aggiunto un arco
     return nodesExists;
+}
+bool GraphManager::Link(QGraphicsItem *Node1, QGraphicsItem *Node2)
+{   setEnableUpdateViews(false);
+    //cerco nella mia lista di nodi se esiste quel puntatore a QGraphicsItem
+    QVector<Node*>::iterator item1=std::find_if(Nodes.begin(),Nodes.end(),[Node1](const Node* item){return Node1==item;});
+    QVector<Node*>::iterator item2=std::find_if(Nodes.begin(),Nodes.end(),[Node2](const Node* item){return Node2==item;});
+    //ritorna iterator end se non esiste
+    //se esistono entrambi e sono diversi
+    bool nodesExists=(item1!=Nodes.end()&&item2!=Nodes.end())&&Node1!=Node2;
+    if(nodesExists)
+    {
+        Arc* temp=new Arc((*item1)->getId(),(*item2)->getId(),Qt::black,false);
+        temp->updatePosition(Arc::start,(*item1)->pos());
+        temp->updatePosition(Arc::end,(*item2)->pos());
+        temp->setPen(QPen(Qt::DashLine));
+        temp->setZValue(-1);
+        Arcs.push_back(temp);
+        this->addItem(temp);
+    }
+    setEnableUpdateViews(true);
+    return true;
 }
 
 //elimina l'oggetto in focus index out of bound se viene chiamata senza controllare che ci sia un oggetto in focus
@@ -254,10 +286,21 @@ void GraphManager::updateArcsOfNode(const Node *node)
 void GraphManager::printLayer(const SpeectNode &start, const QColor &layerColor)
 {
     QList<Node*> toBePrinted;
-    int sameLevelNode=0;
-    int level=0;
-    Node* tmp=new Node(&start, qreal(sameLevelNode*4*NODES_RADIUS), qreal(level*4*NODES_RADIUS), qreal(NODES_RADIUS), layerColor);
-    addNodes(tmp);
+    Node* tmp=new Node(&start,0, 0, qreal(NODES_RADIUS), layerColor);
+    setEnableUpdateViews(false);
+    //creo il nodo e lo aggiungo alla lista
+    Nodes.push_back(tmp);
+    //connetto il segnale di spostamento allo slot
+    connect(tmp,SIGNAL(notifyPositionChange(const Node*)),this,SLOT(nodeMoved(const Node*)));
+    //aggiungo l'oggetto al modello in modo tale che sia renderizzato dalla vista
+    addItem(tmp);
+    while(!tmp->collidingItems().isEmpty()){
+        tmp->setY(tmp->y()+3*NODES_RADIUS);
+        nodeMoved(tmp);
+    }
+    nodeMoved(tmp);
+        
+    setEnableUpdateViews(true);
     toBePrinted.push_front(tmp);
     while(!toBePrinted.isEmpty())
         searchRelationship(toBePrinted,layerColor);

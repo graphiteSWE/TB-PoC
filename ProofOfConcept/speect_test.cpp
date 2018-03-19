@@ -57,13 +57,16 @@
 #endif
 #include<iostream>
 int main(int argc, char **argv) {
+                        QApplication a(argc, argv);
+
+        std::setlocale(LC_ALL, "C");
         char buff[FILENAME_MAX];
         GetCurrentDir( buff, FILENAME_MAX );
         std::string current_working_dir(buff);
         current_working_dir=current_working_dir+"/../../SpeectInstaller/voices/cmu_arctic_slt/voice.json";
         std::cout<<current_working_dir;
         SpeectWrapper speect("","text",current_working_dir.c_str(),"out.wav");
-		QApplication a(argc, argv);
+
 		//creo un seed per il random per generare colori a caso per i nodi
 		//creo il modello del grafo
 

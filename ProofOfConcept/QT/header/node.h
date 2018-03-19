@@ -23,7 +23,7 @@ public:
     QVariant itemChange(GraphicsItemChange change, const QVariant &value);
     //ritorna l'id del nodo
     int getId()const;
-
+	QColor getColor()const;
     bool operator ==(const SpeectNode& NodeInfo) const;
 
     //ridefinito per problemi se "lancio" l'oggetto dichiara che si è spostato un ultima volta
